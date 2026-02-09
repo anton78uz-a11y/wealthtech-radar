@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мировой радар WealthTech 2026 | Альфа-Капитал</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E31235;
+            --primary-dark: #B80E2A;
+            --secondary: #1A1A2E;
+            --accent: #16213E;
+            --bg-dark: #0F0F1A;
+            --bg-card: #1A1A2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0B0;
+            --gradient-1: linear-gradient(135deg, #E31235 0%, #FF6B6B 100%);
+            --gradient-2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-3: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --gradient-4: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+            --gradient-5: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-6: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-7: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(227, 18, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        /* Header */
+        header {
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link-accent {
+            color: var(--primary);
+            padding: 10px 20px;
+            background: rgba(227, 18, 53, 0.1);
+            border-radius: 50px;
+            border: 1px solid rgba(227, 18, 53, 0.3);
+        }
+
+        .nav-link-accent:hover {
+            background: rgba(227, 18, 53, 0.2);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 60px 80px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(227, 18, 53, 0.15);
+            border: 1px solid rgba(227, 18, 53, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /* Filter Navigation */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 60px 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(227, 18, 53, 0.1);
+            border-color: rgba(227, 18, 53, 0.3);
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient-1);
+            border-color: transparent;
+            color: white;
+        }
+
+        .filter-btn .emoji {
+            font-size: 18px;
+        }
+
+        /* Main Grid */
+        .main-content {
+            padding: 0 60px 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .category-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .category-icon.ai { background: var(--gradient-2); }
+        .category-icon.goal { background: var(--gradient-3); }
+        .category-icon.content { background: var(--gradient-4); }
+        .category-icon.alt { background: var(--gradient-5); }
+        .category-icon.modular { background: var(--gradient-6); }
+        .category-icon.asia { background: var(--gradient-1); }
+        .category-icon.gamification { background: var(--gradient-7); }
+
+        .category-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .category-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(227, 18, 53, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-image {
+            height: 220px;
+            background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+        }
+
+        .card-image-placeholder .icon {
+            font-size: 48px;
+            opacity: 0.5;
+        }
+
+        .card-image-placeholder span {
+            font-size: 14px;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-company {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-image {
+            height: 350px;
+            background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 40px;
+        }
+
+        .modal-company {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .modal-features {
+            margin-bottom: 32px;
+        }
+
+        .modal-features h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            header, .hero, .main-content, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .stat-value {
+                font-size: 36px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .filter-nav {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Divider Section - Наш план */
+        .divider-section {
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(227, 18, 53, 0.05) 50%, var(--bg-dark) 100%);
+        }
+
+        .divider-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: var(--gradient-1);
+        }
+
+        .divider-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .divider-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+
+        .divider-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .divider-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Alfa Plan Cards */
+        .alfa-card {
+            border: 1px solid rgba(227, 18, 53, 0.2);
+        }
+
+        .alfa-card:hover {
+            border-color: rgba(227, 18, 53, 0.5);
+            box-shadow: 0 20px 60px rgba(227, 18, 53, 0.2);
+        }
+
+        .alfa-gradient-1 { background: linear-gradient(135deg, #E31235 0%, #ff6b6b 100%); }
+        .alfa-gradient-2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .alfa-gradient-3 { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .alfa-gradient-4 { background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); }
+        .alfa-gradient-5 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .alfa-gradient-6 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .alfa-gradient-7 { background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%); }
+
+        .tag.world-ref {
+            background: rgba(227, 18, 53, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(227, 18, 53, 0.3);
+        }
+
+        .card-wide {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 800px) {
+            .card-wide {
+                grid-column: span 1;
+            }
+
+            .divider-section {
+                padding: 60px 30px;
+            }
+
+            .divider-title {
+                font-size: 32px;
+            }
+
+            .divider-icon {
+                font-size: 48px;
+            }
+        }
+
+        /* Rating System */
+        .card-ratings {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+        }
+
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .rating-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .rating-stars {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .rating-stars .filled { color: #fbbf24; }
+        .rating-stars .empty { color: rgba(255,255,255,0.2); }
+
+        /* Decision Buttons */
+        .card-decision {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .decision-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.6;
+        }
+
+        .decision-btn:hover {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .decision-btn.active {
+            opacity: 1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .decision-btn.go {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .decision-btn.go.active {
+            background: #22c55e;
+            color: white;
+        }
+
+        .decision-btn.later {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .decision-btn.later.active {
+            background: #fbbf24;
+            color: #1a1a2e;
+        }
+
+        .decision-btn.skip {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .decision-btn.skip.active {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Decision Summary */
+        .decision-summary {
+            background: var(--bg-card);
+            border: 1px solid rgba(227, 18, 53, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 40px 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .summary-item {
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .summary-item.go { background: rgba(34, 197, 94, 0.1); }
+        .summary-item.later { background: rgba(251, 191, 36, 0.1); }
+        .summary-item.skip { background: rgba(239, 68, 68, 0.1); }
+
+        .summary-count {
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .summary-item.go .summary-count { color: #22c55e; }
+        .summary-item.later .summary-count { color: #fbbf24; }
+        .summary-item.skip .summary-count { color: #ef4444; }
+
+        .summary-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 800px) {
+            .decision-summary {
+                margin: 20px;
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .card-ratings {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <div class="logo">
+            <img src="images/alfa-capital-icon.svg" alt="Альфа-Капитал" class="logo-icon">
+            <div class="logo-text">Альфа<span>-Капитал</span></div>
+        </div>
+        <nav class="header-nav">
+            <a href="#" class="nav-link" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;">Мировые тренды</a>
+            <a href="#" class="nav-link nav-link-accent" onclick="document.querySelector('.divider-section').scrollIntoView({behavior:'smooth'}); return false;">Наш план →</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-badge">WealthTech Trends 2026</div>
+        <h1>Мировой радар инноваций</h1>
+        <p>20 передовых решений в мобильных приложениях управляющих компаний мира — от AI-персонализации до геймификации</p>
+    </section>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value">20</div>
+            <div class="stat-label">Инноваций</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">7</div>
+            <div class="stat-label">Направлений</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">12</div>
+            <div class="stat-label">Стран</div>
+        </div>
+    </div>
+
+    <nav class="filter-nav">
+        <button class="filter-btn active" data-filter="all">
+            <span class="emoji">🌍</span> Все
+        </button>
+        <button class="filter-btn" data-filter="ai">
+            <span class="emoji">🤖</span> AI-персонализация
+        </button>
+        <button class="filter-btn" data-filter="goal">
+            <span class="emoji">🎯</span> Goal-Based Planning
+        </button>
+        <button class="filter-btn" data-filter="content">
+            <span class="emoji">📱</span> Контент как продукт
+        </button>
+        <button class="filter-btn" data-filter="alt">
+            <span class="emoji">🏛️</span> Альтернативы для всех
+        </button>
+        <button class="filter-btn" data-filter="modular">
+            <span class="emoji">🔧</span> Модульная кастомизация
+        </button>
+        <button class="filter-btn" data-filter="asia">
+            <span class="emoji">🌏</span> Азиатские супер-аппы
+        </button>
+        <button class="filter-btn" data-filter="gamification">
+            <span class="emoji">🎮</span> Геймификация
+        </button>
+    </nav>
+
+    <main class="main-content">
+        <!-- AI Персонализация -->
+        <section class="category-section" data-category="ai">
+            <div class="category-header">
+                <div class="category-icon ai">🤖</div>
+                <h2 class="category-title">AI-персонализация</h2>
+                <span class="category-count">4 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 1: BlackRock Aladdin -->
+                <article class="card" data-id="1">
+                    <div class="card-image">
+                        <img src="images/blackrock-aladdin.png" alt="BlackRock Aladdin">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">BlackRock</div>
+                        <h3 class="card-title">Aladdin AI Commentary</h3>
+                        <p class="card-description">Генеративный AI создаёт персонализированные рыночные комментарии на основе состава портфеля клиента и его инвестиционных предпочтений.</p>
+                        <div class="card-tags">
+                            <span class="tag">Gen AI</span>
+                            <span class="tag">B2B2C</span>
+                            <span class="tag">Morgan Stanley</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: JPMorgan AI Insights -->
+                <article class="card" data-id="2">
+                    <div class="card-image">
+                        <img src="images/jpmorgan-insights.png" alt="JPMorgan AI Insights">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">JPMorgan</div>
+                        <h3 class="card-title">AI Portfolio Insights</h3>
+                        <p class="card-description">Умные push-уведомления о рисках портфеля, возможностях ребалансировки и рыночных событиях, релевантных для конкретного клиента.</p>
+                        <div class="card-tags">
+                            <span class="tag">Smart Alerts</span>
+                            <span class="tag">Risk Analysis</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: Betterment Tax-Loss Harvesting -->
+                <article class="card" data-id="3">
+                    <div class="card-image">
+                        <img src="images/betterment-tlh.png" alt="Betterment Tax-Loss Harvesting">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Betterment</div>
+                        <h3 class="card-title">Tax-Loss Harvesting</h3>
+                        <p class="card-description">Автоматическая налоговая оптимизация в реальном времени — алгоритм продаёт убыточные позиции и заменяет их на аналоги для снижения налоговой базы.</p>
+                        <div class="card-tags">
+                            <span class="tag">Tax Optimization</span>
+                            <span class="tag">Auto-pilot</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 16: Robinhood Cortex AI -->
+                <article class="card" data-id="16">
+                    <div class="card-image">
+                        <img src="images/robinhood-cortex.png" alt="Robinhood Cortex AI">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Robinhood</div>
+                        <h3 class="card-title">Cortex AI Assistant</h3>
+                        <p class="card-description">AI-ассистент институционального уровня: исследование рынка на естественном языке, создание кастомных индикаторов без кода, персональные дайджесты портфеля.</p>
+                        <div class="card-tags">
+                            <span class="tag">Natural Language</span>
+                            <span class="tag">Trade Builder</span>
+                            <span class="tag">Gold $5/мес</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Goal-Based Planning -->
+        <section class="category-section" data-category="goal">
+            <div class="category-header">
+                <div class="category-icon goal">🎯</div>
+                <h2 class="category-title">Goal-Based Planning</h2>
+                <span class="category-count">5 решений</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 4: Wealthfront Path -->
+                <article class="card" data-id="4">
+                    <div class="card-image">
+                        <img src="images/wealthfront-path.gif" alt="Wealthfront Path">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Wealthfront</div>
+                        <h3 class="card-title">Path Financial Planning</h3>
+                        <p class="card-description">Визуализация финансового будущего с симуляцией сценариев "что если" — покупка дома, выход на пенсию, образование детей.</p>
+                        <div class="card-tags">
+                            <span class="tag">Monte Carlo</span>
+                            <span class="tag">Scenarios</span>
+                            <span class="tag">Free Tool</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5: DBS NAV Planner -->
+                <article class="card" data-id="5">
+                    <div class="card-image">
+                        <img src="images/dbs-nav-planner.png" alt="DBS NAV Planner">
+                        <span class="card-badge">🇸🇬 Сингапур</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">DBS Bank</div>
+                        <h3 class="card-title">NAV Planner</h3>
+                        <p class="card-description">Интегрированное планирование целей с агрегацией всех финансов через SGFinDex — банки, страховки, пенсия, недвижимость в одном месте.</p>
+                        <div class="card-tags">
+                            <span class="tag">Open Banking</span>
+                            <span class="tag">360° View</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6: UBS My Way -->
+                <article class="card" data-id="6">
+                    <div class="card-image">
+                        <img src="images/ubs-myway.jpg" alt="UBS My Way">
+                        <span class="card-badge">🇨🇭 Швейцария</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">UBS</div>
+                        <h3 class="card-title">My Way</h3>
+                        <p class="card-description">Модульный конструктор инвестиционных решений — клиент выбирает степень делегирования: от полного управления до самостоятельных решений.</p>
+                        <div class="card-tags">
+                            <span class="tag">Modular</span>
+                            <span class="tag">Hybrid Advisory</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 17: Acorns Money Manager -->
+                <article class="card" data-id="17">
+                    <div class="card-image">
+                        <img src="images/acorns-money-manager.webp" alt="Acorns Money Manager">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Acorns</div>
+                        <h3 class="card-title">Money Manager</h3>
+                        <p class="card-description">Автопилот финансов: автоматическое распределение зарплаты по целям — emergency fund, пенсия, инвестиции, траты. Средний результат: $693/мес на подушку.</p>
+                        <div class="card-tags">
+                            <span class="tag">Auto-pilot</span>
+                            <span class="tag">Paycheck Split</span>
+                            <span class="tag">Gold $12/мес</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 18: JPMorgan Wealth Plan -->
+                <article class="card" data-id="18">
+                    <div class="card-image">
+                        <img src="images/jpmorgan-wealth-plan.png" alt="JPMorgan Wealth Plan">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">JPMorgan Chase</div>
+                        <h3 class="card-title">Wealth Plan Simulator</h3>
+                        <p class="card-description">Интерактивный симулятор будущего со слайдерами: пенсия, дом, образование. Monte Carlo в реальном времени. 1M+ персонализированных планов.</p>
+                        <div class="card-tags">
+                            <span class="tag">What-If Scenarios</span>
+                            <span class="tag">Free</span>
+                            <span class="tag">62M Users</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Контент как продукт -->
+        <section class="category-section" data-category="content">
+            <div class="category-header">
+                <div class="category-icon content">📱</div>
+                <h2 class="category-title">Контент как продукт</h2>
+                <span class="category-count">2 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 7: Titan Daily Feed -->
+                <article class="card" data-id="7">
+                    <div class="card-image">
+                        <img src="images/titan-feed.webp" alt="Titan Daily Feed">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Titan</div>
+                        <h3 class="card-title">Daily Feed</h3>
+                        <p class="card-description">Instagram-подобная лента от портфельных менеджеров — ежедневные видео и посты с объяснением инвестиционных решений и рыночной ситуации.</p>
+                        <div class="card-tags">
+                            <span class="tag">Social Feed</span>
+                            <span class="tag">Video Content</span>
+                            <span class="tag">Transparency</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 8: Fundrise Updates -->
+                <article class="card" data-id="8">
+                    <div class="card-image">
+                        <img src="images/fundrise-updates.jpg" alt="Fundrise Updates">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Fundrise</div>
+                        <h3 class="card-title">Investor Updates</h3>
+                        <p class="card-description">Прозрачные отчёты о каждом объекте недвижимости — фото строек, финансовые метрики, прогресс девелопмента в реальном времени.</p>
+                        <div class="card-tags">
+                            <span class="tag">Real Estate</span>
+                            <span class="tag">Photo Reports</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Альтернативы для всех -->
+        <section class="category-section" data-category="alt">
+            <div class="category-header">
+                <div class="category-icon alt">🏛️</div>
+                <h2 class="category-title">Альтернативные инвестиции для всех</h2>
+                <span class="category-count">3 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 9: Moonfare -->
+                <article class="card" data-id="9">
+                    <div class="card-image">
+                        <img src="images/moonfare-pe.webp" alt="Moonfare Private Equity">
+                        <span class="card-badge">🇩🇪 Германия</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Moonfare</div>
+                        <h3 class="card-title">Private Equity Access</h3>
+                        <p class="card-description">Доступ к топовым PE-фондам (KKR, Carlyle, EQT) от €10K вместо €10M — демократизация закрытых инструментов через ELTIF-структуры.</p>
+                        <div class="card-tags">
+                            <span class="tag">Private Equity</span>
+                            <span class="tag">ELTIF</span>
+                            <span class="tag">Low Minimum</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 10: Yieldstreet -->
+                <article class="card" data-id="10">
+                    <div class="card-image">
+                        <img src="images/yieldstreet-alt.png" alt="Yieldstreet Alternative Investments">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Yieldstreet</div>
+                        <h3 class="card-title">Alternative Investments</h3>
+                        <p class="card-description">Маркетплейс альтернатив — private credit, искусство, marine finance, litigation finance. Минимум от $10K, доходность 8-15% годовых.</p>
+                        <div class="card-tags">
+                            <span class="tag">Art</span>
+                            <span class="tag">Private Credit</span>
+                            <span class="tag">Diversification</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 11: Yu'e Bao -->
+                <article class="card" data-id="11">
+                    <div class="card-image">
+                        <img src="images/yuebao-ant.webp" alt="Yu'e Bao Alipay">
+                        <span class="card-badge">🇨🇳 Китай</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Ant Group (Alipay)</div>
+                        <h3 class="card-title">Yu'e Bao</h3>
+                        <p class="card-description">Крупнейший money market fund в мире ($165B AUM) — мгновенная ликвидность, вывод в любое время, интеграция с платежами Alipay.</p>
+                        <div class="card-tags">
+                            <span class="tag">Money Market</span>
+                            <span class="tag">Instant Liquidity</span>
+                            <span class="tag">900M Users</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Модульная кастомизация -->
+        <section class="category-section" data-category="modular">
+            <div class="category-header">
+                <div class="category-icon modular">🔧</div>
+                <h2 class="category-title">Модульная кастомизация</h2>
+                <span class="category-count">2 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 12: Canvas OSAM -->
+                <article class="card" data-id="12">
+                    <div class="card-image">
+                        <img src="images/canvas-osam.png" alt="Canvas OSAM Direct Indexing">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">OSAM (Franklin Templeton)</div>
+                        <h3 class="card-title">Canvas Direct Indexing</h3>
+                        <p class="card-description">Персональный индекс с возможностью исключить отдельные акции, секторы или добавить ESG/тематические фильтры — как конструктор автомобиля.</p>
+                        <div class="card-tags">
+                            <span class="tag">Direct Indexing</span>
+                            <span class="tag">ESG</span>
+                            <span class="tag">Tax Alpha</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 13: Scalable Capital -->
+                <article class="card" data-id="13">
+                    <div class="card-image">
+                        <img src="images/scalable-var.png" alt="Scalable Capital VaR Dashboard">
+                        <span class="card-badge">🇩🇪 Германия</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Scalable Capital</div>
+                        <h3 class="card-title">VaR Dashboard</h3>
+                        <p class="card-description">Интерактивная визуализация риска портфеля — Value at Risk, stress-тесты, корреляции активов на понятных графиках для розничного инвестора.</p>
+                        <div class="card-tags">
+                            <span class="tag">Risk Viz</span>
+                            <span class="tag">VaR</span>
+                            <span class="tag">Stress Tests</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Азиатские супер-аппы -->
+        <section class="category-section" data-category="asia">
+            <div class="category-header">
+                <div class="category-icon asia">🌏</div>
+                <h2 class="category-title">Азиатские супер-аппы</h2>
+                <span class="category-count">2 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 14: WeChat Wealth -->
+                <article class="card" data-id="14">
+                    <div class="card-image">
+                        <img src="images/wechat-wealth.jpg" alt="WeChat Licaitong">
+                        <span class="card-badge">🇨🇳 Китай</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Tencent</div>
+                        <h3 class="card-title">WeChat Licaitong</h3>
+                        <p class="card-description">Полная экосистема инвестиций внутри мессенджера — 300 фондов, 150M пользователей, минимум 0.01 юаня, бесшовная интеграция с платежами.</p>
+                        <div class="card-tags">
+                            <span class="tag">Super-App</span>
+                            <span class="tag">500B Yuan AUM</span>
+                            <span class="tag">Embedded Finance</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 15: Grab Invest -->
+                <article class="card" data-id="15">
+                    <div class="card-image">
+                        <img src="images/grab-invest.png" alt="Grab Invest">
+                        <span class="card-badge">🇸🇬 ЮВА</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Grab</div>
+                        <h3 class="card-title">Grab Invest</h3>
+                        <p class="card-description">Инвестиции в такси-приложении для Юго-Восточной Азии — от $1, автоматический round-up с поездок, gamification для новичков.</p>
+                        <div class="card-tags">
+                            <span class="tag">Round-up</span>
+                            <span class="tag">Micro-investing</span>
+                            <span class="tag">Gamification</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Геймификация и Engagement -->
+        <section class="category-section" data-category="gamification">
+            <div class="category-header">
+                <div class="category-icon gamification">🎮</div>
+                <h2 class="category-title">Геймификация и Engagement</h2>
+                <span class="category-count">2 решения</span>
+            </div>
+            <div class="cards-grid">
+                <!-- Card 19: Nubank NuCoin -->
+                <article class="card" data-id="19">
+                    <div class="card-image">
+                        <img src="images/nubank-nucoin.jpg" alt="Nubank NuCoin">
+                        <span class="card-badge">🇧🇷 Бразилия</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Nubank</div>
+                        <h3 class="card-title">NuCoin Loyalty</h3>
+                        <p class="card-description">Блокчейн-токены за банковские действия: сундуки с сюрпризами, квизы, обмен на скидки. 60M+ пользователей открывают приложение ради наград.</p>
+                        <div class="card-tags">
+                            <span class="tag">Polygon Blockchain</span>
+                            <span class="tag">Gamification</span>
+                            <span class="tag">Daily Engagement</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 20: Robinhood Prediction Markets -->
+                <article class="card" data-id="20">
+                    <div class="card-image">
+                        <img src="images/robinhood-predictions.png" alt="Robinhood Prediction Markets">
+                        <span class="card-badge">🇺🇸 США</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Robinhood</div>
+                        <h3 class="card-title">Prediction Markets</h3>
+                        <p class="card-description">Ставки на спорт, политику и экономику прямо в инвестиционном приложении. Yes/No интерфейс, 11B контрактов, ~$300M ARR. Самый быстрорастущий продукт.</p>
+                        <div class="card-tags">
+                            <span class="tag">Event Contracts</span>
+                            <span class="tag">Sports Betting</span>
+                            <span class="tag">~10% Revenue</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-image" id="modal-image"></div>
+            <div class="modal-content">
+                <div class="modal-company" id="modal-company"></div>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <p class="modal-description" id="modal-description"></p>
+                <div class="modal-features">
+                    <h4>Ключевые особенности</h4>
+                    <div class="feature-list" id="modal-features"></div>
+                </div>
+                <a href="#" class="modal-link" id="modal-link" target="_blank">
+                    Узнать больше →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Разделитель -->
+    <section class="divider-section">
+        <div class="divider-content">
+            <div class="divider-icon">🇷🇺</div>
+            <h2 class="divider-title">Наш план на 2026</h2>
+            <p class="divider-subtitle">9 утверждённых задач + 18 идей для обсуждения</p>
+        </div>
+    </section>
+
+    <!-- УТВЕРЖДЁННЫЕ ЗАДАЧИ -->
+    <section class="approved-section" style="padding: 60px; max-width: 1400px; margin: 0 auto;">
+        <div style="background: linear-gradient(135deg, rgba(17, 153, 142, 0.15) 0%, rgba(56, 239, 125, 0.1) 100%); border: 2px solid rgba(56, 239, 125, 0.4); border-radius: 24px; padding: 48px; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 16px;">
+                <span style="font-size: 40px;">✅</span> Утверждённые задачи на 2026
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 18px; margin-bottom: 40px;">9 задач уже в работе — это наш фокус на год</p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+                <!-- Хайнеты -->
+                <div style="background: rgba(227, 18, 53, 0.1); border: 1px solid rgba(227, 18, 53, 0.3); border-radius: 16px; padding: 24px;">
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #E31235;">👑 Хайнеты</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Корректность цифр и быстрая работа МК</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Точные данные и производительность</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Развитие аналитики</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Структура фондов, новые разрезы, главный экран</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Новые типы доходности</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Без налогов, по классам, в годовых</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Инновации -->
+                <div style="background: rgba(102, 126, 234, 0.1); border: 1px solid rgba(102, 126, 234, 0.3); border-radius: 16px; padding: 24px;">
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #667eea;">🚀 Инновации</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Дарение паёв</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Возможность подарить паи</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Геймификация и итоги</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Достижения, стрики, итоги года</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Продвинутый AI-консультант</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Вопросы, атрибуция, голос, alerts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Развитие бизнеса -->
+                <div style="background: rgba(17, 153, 142, 0.1); border: 1px solid rgba(17, 153, 142, 0.3); border-radius: 16px; padding: 24px;">
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #11998e;">📈 Развитие бизнеса</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Продвинутый ЛК для агентов</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Расширенный функционал агентов</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Альфа Премиум</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Премиальный сервис для HNWI</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Платная аналитика</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Расширенная аналитика по подписке</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px; color: var(--text-secondary);">
+            💡 Идеи для обсуждения
+        </h3>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px;">18 идей для возможной реализации в 2026 году</p>
+    </section>
+
+    <!-- Фильтры для нашего плана -->
+    <nav class="filter-nav" id="alfa-filters">
+        <button class="filter-btn active" data-alfa-filter="all">
+            <span class="emoji">📋</span> Все идеи
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-ai">
+            <span class="emoji">🤖</span> AI
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-planning">
+            <span class="emoji">🎯</span> Планирование
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-social">
+            <span class="emoji">👥</span> Социальные
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-alt">
+            <span class="emoji">🏠</span> Альтернативы
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-consultant">
+            <span class="emoji">👤</span> Консультант
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-lifestyle">
+            <span class="emoji">🎁</span> Lifestyle
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-education">
+            <span class="emoji">📚</span> Обучение
+        </button>
+        <button class="filter-btn" data-alfa-filter="alfa-infra">
+            <span class="emoji">🔧</span> Инфраструктура
+        </button>
+    </nav>
+
+    <!-- Decision Summary -->
+    <div class="decision-summary" id="decision-summary">
+        <div class="summary-item go">
+            <div class="summary-count" id="count-go">0</div>
+            <div class="summary-label">🟢 Копаем</div>
+        </div>
+        <div class="summary-item later">
+            <div class="summary-count" id="count-later">0</div>
+            <div class="summary-label">🟡 Позже</div>
+        </div>
+        <div class="summary-item skip">
+            <div class="summary-count" id="count-skip">0</div>
+            <div class="summary-label">🔴 Пропускаем</div>
+        </div>
+    </div>
+
+    <!-- Наш план -->
+    <main class="main-content" id="alfa-plan">
+        <!-- AI и персонализация -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-ai">
+            <div class="category-header">
+                <div class="category-icon ai">🤖</div>
+                <h2 class="category-title">AI и персонализация</h2>
+                <span class="category-count">2 идеи</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="smart-showcase">
+                    <div class="card-image">
+                        <img src="images/ak-smart-showcase.png" alt="Умная витрина">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Персонализация</div>
+                        <h3 class="card-title">Умная витрина</h3>
+                        <p class="card-description">Персональные рекомендации на основе 6 факторов: профиль, портфель, поведение в приложении, история с ИК, рынок, похожие клиенты</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ JPMorgan AI Insights</span>
+                            <span class="tag">ML</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('smart-showcase', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('smart-showcase', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('smart-showcase', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="tax-optimization">
+                    <div class="card-image">
+                        <img src="images/ak-tax-optimization.png" alt="Налоговая оптимизация">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Налоги</div>
+                        <h3 class="card-title">Налоговая оптимизация</h3>
+                        <p class="card-description">Сальдирование убытков, льгота ЛДВ (3+ года), налоговый календарь, симулятор "что если" при сделках</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Betterment TLH</span>
+                            <span class="tag">Адаптация для РФ</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('tax-optimization', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('tax-optimization', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('tax-optimization', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Планирование и аналитика -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-planning">
+            <div class="category-header">
+                <div class="category-icon goal">🎯</div>
+                <h2 class="category-title">Планирование и аналитика</h2>
+                <span class="category-count">5 идей</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="target-planning">
+                    <div class="card-image">
+                        <img src="images/ak-target-planning.png" alt="Короткие цели">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Target Planning</div>
+                        <h3 class="card-title">Короткие цели</h3>
+                        <p class="card-description">Цели на 6 мес — 2 года (подушка, отпуск, покупка), геймификация прогресса, симулятор "что если" без обязательств</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Wealthfront Path</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('target-planning', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('target-planning', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('target-planning', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="ai-strategies">
+                    <div class="card-image">
+                        <img src="images/ak-ai-strategies.png" alt="AI-стратегии">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">AI-стратегии</div>
+                        <h3 class="card-title">Управляемые решения</h3>
+                        <p class="card-description">Комбинации фондов АК с гибкими долями. AI + аналитики меняют аллокацию в зависимости от рынка</p>
+                        <div class="card-tags">
+                            <span class="tag">Robo-advisor</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('ai-strategies', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('ai-strategies', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('ai-strategies', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="stress-testing">
+                    <div class="card-image">
+                        <img src="images/ak-stress-test.png" alt="stress-testing">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Риск-менеджмент</div>
+                        <h3 class="card-title">Стресс-тестирование+</h3>
+                        <p class="card-description">Позитивные сценарии, исторические кризисы (2008, 2014, 2022), рекомендации + кнопка "Улучшить"</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Scalable Capital VaR</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('stress-testing', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('stress-testing', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('stress-testing', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="portfolio-health">
+                    <div class="card-image">
+                        <img src="images/ak-portfolio-health.png" alt="Здоровье портфеля">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Аналитика</div>
+                        <h3 class="card-title">Здоровье портфеля</h3>
+                        <p class="card-description">Скор 1-10 по: диверсификация, риск-профиль, ликвидность, концентрация. Рекомендации "Как улучшить"</p>
+                        <div class="card-tags">
+                            <span class="tag">Portfolio Health</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('portfolio-health', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('portfolio-health', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('portfolio-health', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="yield-scenarios">
+                    <div class="card-image">
+                        <img src="images/ak-return-scenarios.png" alt="yield-scenarios">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Прогнозы</div>
+                        <h3 class="card-title">Сценарии доходности</h3>
+                        <p class="card-description">Оптимистичный / базовый / пессимистичный сценарий в карточках продуктов (соответствует ПАФ)</p>
+                        <div class="card-tags">
+                            <span class="tag">Регуляторно корректно</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('yield-scenarios', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('yield-scenarios', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('yield-scenarios', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Социальные функции -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-social">
+            <div class="category-header">
+                <div class="category-icon content">👥</div>
+                <h2 class="category-title">Социальные функции</h2>
+                <span class="category-count">1 идея</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="social-network">
+                    <div class="card-image">
+                        <img src="images/ak-social-feed.png" alt="social-network">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Соцсеть для инвесторов</div>
+                        <h3 class="card-title">Экспертный контент</h3>
+                        <p class="card-description">Лента от аналитиков и управляющих АК, шеринг достижений клиентов, Q&A-сессии. Без обсуждения сделок — контент от экспертов</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Titan Daily Feed</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('social-network', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('social-network', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('social-network', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Альтернативные активы -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-alt">
+            <div class="category-header">
+                <div class="category-icon alt">🏠</div>
+                <h2 class="category-title">Альтернативные активы</h2>
+                <span class="category-count">3 идеи</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="zpif-visualization">
+                    <div class="card-image">
+                        <img src="images/ak-real-estate.png" alt="ЗПИФ недвижимости">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Визуализация ЗПИФ</div>
+                        <h3 class="card-title">«Увидь свои метры»</h3>
+                        <p class="card-description">Карта объектов, "твоя доля = 47 м²", арендаторы (Яндекс платит ~340₽/мес), stories-отчёты управляющего</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Fundrise</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('zpif-visualization', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('zpif-visualization', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('zpif-visualization', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="aggregation">
+                    <div class="card-image">
+                        <img src="images/ak-external-assets.png" alt="aggregation">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Агрегация</div>
+                        <h3 class="card-title">Внешние активы</h3>
+                        <p class="card-description">Полная картина благосостояния. Зависит от OpenAPI ЦБ (УК пока не в пилоте) — идея на будущее</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ DBS NAV Planner</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('aggregation', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('aggregation', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('aggregation', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="crypto">
+                    <div class="card-image">
+                        <img src="images/ak-crypto.png" alt="Криптовалюты">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Крипто</div>
+                        <h3 class="card-title">Криптовалюты</h3>
+                        <p class="card-description">Готовые продукты (фонд/стратегия) или торговля в ИДУ. Неквалы до 300 тыс ₽/год, квалы без ограничений</p>
+                        <div class="card-tags">
+                            <span class="tag">Концепция ЦБ дек'25</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('crypto', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('crypto', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('crypto', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Инвестиционный консультант -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-consultant">
+            <div class="category-header">
+                <div class="category-icon" style="background: var(--gradient-2);">👤</div>
+                <h2 class="category-title">Инвестиционный консультант</h2>
+                <span class="category-count">1 идея</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="advisor-chat">
+                    <div class="card-image">
+                        <img src="images/ak-consultant-chat.png" alt="Чат с консультантом">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Персональный канал</div>
+                        <h3 class="card-title">Чат с консультантом</h3>
+                        <p class="card-description">Переписка, офферы как карточки с кнопкой "Купить", история рекомендаций, запись на звонок. Высокий effort (~X3 рефонд)</p>
+                        <div class="card-tags">
+                            <span class="tag">Advisory Channel</span>
+                            <span class="tag">Высокий Effort</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('advisor-chat', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('advisor-chat', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('advisor-chat', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Lifestyle & Партнёры -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-lifestyle">
+            <div class="category-header">
+                <div class="category-icon" style="background: var(--gradient-4);">🎁</div>
+                <h2 class="category-title">Lifestyle & Партнёры</h2>
+                <span class="category-count">4 идеи</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="lifestyle-marketplace">
+                    <div class="card-image">
+                        <img src="images/ak-lifestyle.png" alt="lifestyle-marketplace">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Lifestyle Marketplace</div>
+                        <h3 class="card-title">Премиальные сервисы</h3>
+                        <p class="card-description">Недвижимость, авто, путешествия, консьерж. Партнёрские предложения для HNWI. Проблема: поиск партнёров</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Titan Access</span>
+                            <span class="tag">Высокий Effort</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('lifestyle-marketplace', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('lifestyle-marketplace', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('lifestyle-marketplace', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="charity">
+                    <div class="card-image">
+                        <img src="images/ak-charity.png" alt="Благотворительность">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Эндаумент</div>
+                        <h3 class="card-title">Благотворительность</h3>
+                        <p class="card-description">Округление, % от дохода, взнос при покупке. Фотоотчёты, бейджи "Филантроп" в геймификации</p>
+                        <div class="card-tags">
+                            <span class="tag">Impact Investing</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('charity', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('charity', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('charity', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="family-investing">
+                    <div class="card-image">
+                        <img src="images/ak-family.png" alt="family-investing">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Семья</div>
+                        <h3 class="card-title">Семейные инвестиции</h3>
+                        <p class="card-description">Совместные счета с разными ролями (владелец, наблюдатель), видеть счета детей в приложении</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Acorns Early</span>
+                            <span class="tag">PR-потенциал</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('family-investing', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('family-investing', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('family-investing', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card alfa-card" data-idea-id="wellness">
+                    <div class="card-image">
+                        <img src="images/ak-wellness.png" alt="Wellness-интеграции">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Wellness</div>
+                        <h3 class="card-title">Wellness-интеграции</h3>
+                        <p class="card-description">Связка со страховыми продуктами, пуши о здоровье в контексте финансов. Нишевая история</p>
+                        <div class="card-tags">
+                            <span class="tag">Низкий приоритет</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★</span><span class="empty">★★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('wellness', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('wellness', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('wellness', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Образовательный контент -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-education">
+            <div class="category-header">
+                <div class="category-icon" style="background: var(--gradient-5);">📚</div>
+                <h2 class="category-title">Образовательный контент</h2>
+                <span class="category-count">1 идея</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card card-wide" data-idea-id="education">
+                    <div class="card-image">
+                        <img src="images/ak-education.png" alt="education">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Два подхода в одном</div>
+                        <h3 class="card-title">Обучение нового поколения</h3>
+                        <p class="card-description">
+                            <strong>A) Duolingo-стиль:</strong> микро-уроки):3 мин, геймификация<br>
+                            <strong>B) Контекстные подсказки:</strong> обучение в момент действия
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Duolingo</span>
+                            <span class="tag world-ref">→ Titan Daily Feed</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('education', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('education', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('education', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Инфраструктура -->
+        <section class="category-section alfa-section" data-alfa-category="alfa-infra">
+            <div class="category-header">
+                <div class="category-icon modular">🔧</div>
+                <h2 class="category-title">Инфраструктура</h2>
+                <span class="category-count">1 идея</span>
+            </div>
+            <div class="cards-grid">
+                <article class="card alfa-card" data-idea-id="smart-cash">
+                    <div class="card-image">
+                        <img src="images/ak-smart-cash.png" alt="Умный кэш">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-company">Умный кэш</div>
+                        <h3 class="card-title">Накопительный счёт 2.0</h3>
+                        <p class="card-description">Хаб на базе денежного рынка: доходность выше депозитов, простой UX, вывод в банк или в другой продукт АК</p>
+                        <div class="card-tags">
+                            <span class="tag world-ref">→ Yu'e Bao</span>
+                        </div>
+                        <div class="card-ratings">
+                            <div class="rating-item"><span class="rating-label">Impact</span><span class="rating-stars"><span class="filled">★★★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Effort</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                            <div class="rating-item"><span class="rating-label">Инновац.</span><span class="rating-stars"><span class="filled">★★</span><span class="empty">★</span></span></div>
+                        </div>
+                        <div class="card-decision">
+                            <button class="decision-btn go" onclick="setDecision('smart-cash', 'go')">🟢 Копаем</button>
+                            <button class="decision-btn later" onclick="setDecision('smart-cash', 'later')">🟡 Позже</button>
+                            <button class="decision-btn skip" onclick="setDecision('smart-cash', 'skip')">🔴 Нет</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Подготовлено для CEO-презентации | Альфа-Капитал | Февраль 2026</p>
+    </footer>
+
+    <script>
+        // Innovation data
+        const innovations = {
+            1: {
+                company: "BlackRock",
+                title: "Aladdin AI Commentary",
+                description: "Генеративный AI на базе платформы Aladdin создаёт персонализированные рыночные комментарии для каждого клиента. Система анализирует состав портфеля, историю сделок и инвестиционные предпочтения, чтобы генерировать релевантные инсайты. Запущено в партнёрстве с Morgan Stanley в октябре 2025 года.",
+                features: [
+                    "Автоматическая генерация комментариев по портфелю",
+                    "Персонализация на основе предпочтений клиента",
+                    "Интеграция с CRM и workflow адвайзеров",
+                    "Масштабирование human touch через AI"
+                ],
+                link: "https://www.blackrock.com/aladdin/products/aladdin-wealth",
+                image: "images/blackrock-aladdin.png"
+            },
+            2: {
+                company: "JPMorgan",
+                title: "AI Portfolio Insights",
+                description: "Система умных уведомлений на базе машинного обучения анализирует портфель клиента в реальном времени и отправляет персонализированные алерты о рисках, возможностях ребалансировки и рыночных событиях, которые могут повлиять на конкретные позиции.",
+                features: [
+                    "Real-time мониторинг рисков портфеля",
+                    "Персонализированные push-уведомления",
+                    "Рекомендации по ребалансировке",
+                    "Связь новостей с позициями клиента"
+                ],
+                link: "https://www.jpmorgan.com/wealth-management",
+                image: "images/jpmorgan-insights.png"
+            },
+            3: {
+                company: "Betterment",
+                title: "Tax-Loss Harvesting",
+                description: "Автоматизированная налоговая оптимизация работает 24/7 — алгоритм отслеживает убыточные позиции и продаёт их, одновременно покупая коррелированные замены для сохранения экспозиции. Экономия клиентов составляет в среднем 0.77% годовых дополнительной доходности.",
+                features: [
+                    "Автоматическая продажа убыточных позиций",
+                    "Покупка коррелированных замен (wash sale compliant)",
+                    "Работа в реальном времени, не раз в год",
+                    "Средняя экономия 0.77% годовых"
+                ],
+                link: "https://www.betterment.com/tax-loss-harvesting",
+                image: "images/betterment-tlh.png"
+            },
+            4: {
+                company: "Wealthfront",
+                title: "Path Financial Planning",
+                description: "Бесплатный инструмент финансового планирования использует Monte Carlo симуляции для визуализации вероятности достижения целей. Клиент может моделировать сценарии: покупка дома, выход на пенсию, оплата образования — и видеть, как решения влияют на финансовое будущее.",
+                features: [
+                    "Monte Carlo симуляции 10,000+ сценариев",
+                    "Интеграция с Zillow для цен на недвижимость",
+                    "Автоматическое подключение банковских счетов",
+                    "Бесплатный доступ без обязательств"
+                ],
+                link: "https://www.wealthfront.com/planning",
+                image: "images/wealthfront-path.gif"
+            },
+            5: {
+                company: "DBS Bank",
+                title: "NAV Planner",
+                description: "Комплексное решение для финансового планирования в Сингапуре. Через SGFinDex агрегирует данные из всех банков, страховых компаний, пенсионных счетов (CPF) и налоговой службы. Показывает полную картину финансов и даёт персонализированные рекомендации.",
+                features: [
+                    "Агрегация через государственный SGFinDex",
+                    "Связь банков, страховок, пенсий, налогов",
+                    "Автоматический трекинг расходов по категориям",
+                    "Рекомендации по инвестициям под цели"
+                ],
+                link: "https://www.dbs.com.sg/personal/deposits/digital-services/nav-planner",
+                image: "images/dbs-nav-planner.png"
+            },
+            6: {
+                company: "UBS",
+                title: "My Way",
+                description: "Гибридная модель управления активами, где клиент сам выбирает степень делегирования. От полного мандата (UBS управляет всем) до advisory (клиент принимает решения с помощью рекомендаций) — всё в одном приложении с возможностью переключения.",
+                features: [
+                    "Три уровня делегирования на выбор",
+                    "Переключение между режимами в один клик",
+                    "Единый интерфейс для всех моделей",
+                    "Персональный банкир + цифровые инструменты"
+                ],
+                link: "https://www.ubs.com/global/en/wealth-management.html",
+                image: "images/ubs-myway.jpg"
+            },
+            7: {
+                company: "Titan",
+                title: "Daily Feed",
+                description: "Instagram-подобная лента контента от портфельных менеджеров. Каждый день команда публикует видео и посты с объяснением своих инвестиционных решений, анализом рынка и образовательным контентом. Создаёт ощущение прямого доступа к хедж-фонд менеджерам.",
+                features: [
+                    "Ежедневные видео от PM-команды",
+                    "Объяснение каждой сделки в портфеле",
+                    "Push-уведомления о важных событиях",
+                    "Образовательный контент для новичков"
+                ],
+                link: "https://www.titan.com/",
+                image: "images/titan-feed.webp"
+            },
+            8: {
+                company: "Fundrise",
+                title: "Investor Updates",
+                description: "Радикальная прозрачность в инвестициях в недвижимость. Для каждого объекта в портфеле — фотографии строительства, финансовые метрики, прогресс девелопмента. Инвестор видит, что происходит с его деньгами в реальном времени.",
+                features: [
+                    "Фото и видео с каждого объекта",
+                    "Квартальные финансовые отчёты",
+                    "GPS-карта всех активов в портфеле",
+                    "Таймлайн прогресса девелопмента"
+                ],
+                link: "https://fundrise.com/",
+                image: "images/fundrise-updates.jpg"
+            },
+            9: {
+                company: "Moonfare",
+                title: "Private Equity Access",
+                description: "Демократизация private equity — доступ к фондам KKR, Carlyle, EQT от €10K вместо институционального минимума €10M. Использует ELTIF-структуры для розничных инвесторов с digital onboarding и вторичным рынком для ликвидности.",
+                features: [
+                    "Минимум €10K вместо €10M",
+                    "Топовые PE-фонды: KKR, Carlyle, EQT",
+                    "Digital onboarding за 15 минут",
+                    "Вторичный рынок после 2 лет holding"
+                ],
+                link: "https://www.moonfare.com/",
+                image: "images/moonfare-pe.webp"
+            },
+            10: {
+                company: "Yieldstreet",
+                title: "Alternative Investments",
+                description: "Маркетплейс альтернативных инвестиций для розничных инвесторов. Private credit, искусство, marine finance, litigation finance — все экзотические классы активов от $10K. Целевая доходность 8-15% годовых с низкой корреляцией к рынку.",
+                features: [
+                    "8+ классов альтернатив",
+                    "Минимум от $10K на сделку",
+                    "Целевая доходность 8-15% годовых",
+                    "Короткие сроки 6-36 месяцев"
+                ],
+                link: "https://www.yieldstreet.com/",
+                image: "images/yieldstreet-alt.png"
+            },
+            11: {
+                company: "Ant Group (Alipay)",
+                title: "Yu'e Bao",
+                description: "Крупнейший money market fund в мире с AUM $165B и 900M пользователей. Минимальная инвестиция 0.01 юаня, мгновенный вывод в любое время, автоматическое начисление процентов на остаток в Alipay. Убийца банковских депозитов.",
+                features: [
+                    "$165B AUM, 900M пользователей",
+                    "Минимум 0.01 юаня (≈$0.001)",
+                    "Вывод за секунды 24/7",
+                    "Интеграция с платежами Alipay"
+                ],
+                link: "https://www.antgroup.com/",
+                image: "images/yuebao-ant.webp"
+            },
+            12: {
+                company: "OSAM (Franklin Templeton)",
+                title: "Canvas Direct Indexing",
+                description: "Платформа для создания персонального индекса. Как конструктор автомобиля — клиент выбирает базовый индекс и кастомизирует: исключает отдельные акции, секторы, добавляет ESG-фильтры, тематические наклонности. Tax-loss harvesting на уровне отдельных бумаг.",
+                features: [
+                    "Персональный индекс под предпочтения",
+                    "Исключение любых акций/секторов",
+                    "ESG и тематические фильтры",
+                    "Tax-loss harvesting на уровне позиций"
+                ],
+                link: "https://canvas.osam.com/",
+                image: "images/canvas-osam.png"
+            },
+            13: {
+                company: "Scalable Capital",
+                title: "VaR Dashboard",
+                description: "Визуализация риска портфеля для розничного инвестора. Value at Risk, stress-тесты исторических кризисов, матрица корреляций — всё на понятных интерактивных графиках. Помогает клиенту понять, сколько он может потерять в худшем сценарии.",
+                features: [
+                    "Value at Risk на понятном языке",
+                    "Stress-тесты: 2008, 2020, и др.",
+                    "Интерактивная матрица корреляций",
+                    "Сравнение с benchmark-портфелями"
+                ],
+                link: "https://www.scalable.capital/",
+                image: "images/scalable-var.png"
+            },
+            14: {
+                company: "Tencent",
+                title: "WeChat Licaitong",
+                description: "Инвестиционная платформа внутри мессенджера WeChat с 1.3B пользователей. 300 фондов от 40+ управляющих компаний, минимум 0.01 юаня, бесшовная интеграция с WeChat Pay. Деньги из инвестиций можно потратить на покупки одним касанием.",
+                features: [
+                    "300 фондов в мессенджере",
+                    "500B юаней AUM, 150M инвесторов",
+                    "Интеграция с WeChat Pay",
+                    "Минимум 0.01 юаня"
+                ],
+                link: "https://www.tencent.com/",
+                image: "images/wechat-wealth.jpg"
+            },
+            15: {
+                company: "Grab",
+                title: "Grab Invest",
+                description: "Инвестиции в супер-аппе для такси и доставки в Юго-Восточной Азии. Автоматический round-up — сдача с поездок идёт в инвестиции. Минимум $1, gamification для новичков, интеграция с GrabRewards. Захват аудитории, которая никогда не думала об инвестициях.",
+                features: [
+                    "Round-up с каждой поездки/заказа",
+                    "Минимум $1 для старта",
+                    "Gamification и rewards",
+                    "Интеграция с лояльностью Grab"
+                ],
+                link: "https://www.grab.com/sg/invest/",
+                image: "images/grab-invest.png"
+            },
+            16: {
+                company: "Robinhood",
+                title: "Cortex AI Assistant",
+                description: "AI-ассистент институционального уровня, встроенный во всё приложение. Исследование рынка на естественном языке («найди 5 акций, несправедливо наказанных рынком»), создание кастомных технических индикаторов без кода, Trade Builder для опционных стратегий. Portfolio Digests — персонализированные дайджесты о движении портфеля.",
+                features: [
+                    "Natural Language запросы к рынку",
+                    "Custom Indicators без программирования",
+                    "Trade Builder — AI предлагает сделки",
+                    "Portfolio Digests — ежедневные саммари"
+                ],
+                link: "https://robinhood.com/us/en/support/articles/cortex-digests/",
+                image: "images/robinhood-cortex.png"
+            },
+            17: {
+                company: "Acorns",
+                title: "Money Manager",
+                description: "Полностью автоматизированный финансовый менеджер. После нескольких вопросов приложение автоматически распределяет каждую зарплату: сначала emergency fund, затем пенсия, инвестиции и траты. Ранние результаты: $693/мес на подушку безопасности, $175/мес на пенсию — в 3-5 раз больше, чем при ручном управлении.",
+                features: [
+                    "Автоматическое распределение зарплаты",
+                    "Приоритет: emergency → пенсия → инвестиции",
+                    "$693/мес средние накопления на подушку",
+                    "Set it and forget it"
+                ],
+                link: "https://www.acorns.com/money-manager/",
+                image: "images/acorns-money-manager.webp"
+            },
+            18: {
+                company: "JPMorgan Chase",
+                title: "Wealth Plan Simulator",
+                description: "Бесплатный цифровой финансовый коуч для 62M клиентов Chase. Интерактивные слайдеры «Что если»: возраст пенсии, ежемесячные траты, покупка дома. Monte Carlo симуляция в реальном времени показывает вероятность успеха. Smart Goals — «бросьте пин» на временную шкалу для целей (свадьба, дом), приложение пересчитает норму сбережений.",
+                features: [
+                    "Слайдеры целей с мгновенным пересчётом",
+                    "Monte Carlo симуляция вероятности успеха",
+                    "Агрегация внешних счетов (Net Worth)",
+                    "1M+ персонализированных планов"
+                ],
+                link: "https://www.chase.com/personal/investments/wealth-plan",
+                image: "images/jpmorgan-wealth-plan.png"
+            },
+            19: {
+                company: "Nubank",
+                title: "NuCoin Loyalty",
+                description: "Революционная программа лояльности на блокчейне Polygon. Клиенты зарабатывают токены NuCoin за банковские действия: использование карты, оплату счетов, регистрацию Pix. Механики вовлечения: еженедельные «сундуки с сюрпризами», тематические квизы, флэш-офферы. Обмен на скидки у Shopee, Magalu, Amazon. 60M+ пользователей.",
+                features: [
+                    "Сундуки с сюрпризами каждую неделю",
+                    "Квизы за токены с призами",
+                    "Уровни: больше токенов → больше бонусов",
+                    "Обмен на скидки и товары партнёров"
+                ],
+                link: "https://international.nubank.com.br/consumers/nucoin-nubanks-cryptocurrency-and-loyalty-program-is-now-available-for-customers-in-brazil/",
+                image: "images/nubank-nucoin.jpg"
+            },
+            20: {
+                company: "Robinhood",
+                title: "Prediction Markets Hub",
+                description: "Регулируемая торговля event contracts: спорт, политика, экономика, культура. Радикально упрощённый интерфейс «Yes/No» вместо графиков. Комбо-ставки на матчи и игроков. Самый быстрорастущий источник дохода Robinhood: 11 миллиардов контрактов, ~$300M ARR, ~10% выручки компании. Работает когда фондовый рынок закрыт.",
+                features: [
+                    "Yes/No бинарный интерфейс",
+                    "Спорт, политика, экономика, культура",
+                    "Комбо-ставки на несколько событий",
+                    "24/7 доступ даже в выходные"
+                ],
+                link: "https://robinhood.com/us/en/prediction-markets/",
+                image: "images/robinhood-predictions.png"
+            }
+        };
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categorySections = document.querySelectorAll('.category-section');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter sections
+                categorySections.forEach(section => {
+                    if (filter === 'all' || section.dataset.category === filter) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const cards = document.querySelectorAll('.card');
+        const modal = document.getElementById('modal');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.id;
+                const data = innovations[id];
+
+                document.getElementById('modal-company').textContent = data.company;
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-description').textContent = data.description;
+                document.getElementById('modal-link').href = data.link;
+
+                const featuresHtml = data.features.map(f => `<div class="feature-item">${f}</div>`).join('');
+                document.getElementById('modal-features').innerHTML = featuresHtml;
+
+                // Image handling
+                const modalImage = document.getElementById('modal-image');
+                modalImage.innerHTML = `<img src="${data.image}" alt="${data.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-image-placeholder\\'><span class=\\'icon\\'>🖼️</span><span>${data.image}</span></div>'">`;
+
+                modal.classList.add('active');
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Alfa Plan Filter functionality
+        const alfaFilterBtns = document.querySelectorAll('[data-alfa-filter]');
+        const alfaSections = document.querySelectorAll('.alfa-section');
+
+        alfaFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.alfaFilter;
+
+                // Update active button in alfa filters only
+                alfaFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter alfa sections
+                alfaSections.forEach(section => {
+                    if (filter === 'all' || section.dataset.alfaCategory === filter) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll to Alfa Plan section when clicking the divider
+        document.querySelector('.divider-section')?.addEventListener('click', () => {
+            document.getElementById('alfa-plan')?.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Decision handling for Alfa Plan ideas
+        const decisions = JSON.parse(localStorage.getItem('alfa-decisions') || '{}');
+
+        function setDecision(ideaId, decision) {
+            // Toggle off if clicking same decision
+            if (decisions[ideaId] === decision) {
+                delete decisions[ideaId];
+            } else {
+                decisions[ideaId] = decision;
+            }
+            localStorage.setItem('alfa-decisions', JSON.stringify(decisions));
+            updateDecisionUI(ideaId, decisions[ideaId]);
+            updateSummaryCounts();
+        }
+
+        function updateDecisionUI(ideaId, decision) {
+            const card = document.querySelector(`[data-idea-id="${ideaId}"]`);
+            if (!card) return;
+            card.querySelectorAll('.decision-btn').forEach(btn => btn.classList.remove('active'));
+            if (decision) {
+                card.querySelector(`.decision-btn.${decision}`)?.classList.add('active');
+            }
+        }
+
+        function updateSummaryCounts() {
+            const counts = { go: 0, later: 0, skip: 0 };
+            Object.values(decisions).forEach(d => { if (d) counts[d]++; });
+            document.getElementById('count-go').textContent = counts.go;
+            document.getElementById('count-later').textContent = counts.later;
+            document.getElementById('count-skip').textContent = counts.skip;
+
+            // Show/hide summary based on whether any decisions made
+            const total = counts.go + counts.later + counts.skip;
+            const summary = document.getElementById('decision-summary');
+            if (summary) {
+                summary.style.display = total > 0 ? 'flex' : 'none';
+            }
+        }
+
+        // Initialize decisions on page load
+        Object.entries(decisions).forEach(([id, decision]) => updateDecisionUI(id, decision));
+        updateSummaryCounts();
+
+        // Alfa-Capital ideas data
+        const alfaIdeas = {
+            'smart-showcase': {
+                title: 'Умная витрина',
+                company: 'AI и персонализация',
+                description: 'Персональные рекомендации продуктов на основе 6 факторов: профиль клиента, состав портфеля, поведение в приложении, история общения с ИК, рыночная ситуация и предпочтения похожих клиентов. Сейчас 3 статичные витрины (новички, обычные, состоятельные). Цель — персонализация для каждого клиента.',
+                features: ['Профиль клиента (риск-профиль, возраст, сегмент)', 'Поведение в приложении (просмотры, клики, время)', 'История общения с консультантом', 'Collaborative filtering по похожим клиентам'],
+                image: 'images/ak-smart-showcase.png'
+            },
+            'tax-optimization': {
+                title: 'Налоговая оптимизация',
+                company: 'AI и персонализация',
+                description: 'Умные инструменты для снижения налогов: сальдирование убытков, отслеживание льготы долгосрочного владения (3+ года), налоговый календарь с напоминаниями и симулятор "что если" для расчёта последствий сделок.',
+                features: ['Сальдирование убытков — позиции для уменьшения налоговой базы', 'Льгота ЛДВ — какие бумаги скоро попадут', 'Налоговый календарь — пуши о сроках', 'Симулятор "что если" при сделках'],
+                image: 'images/ak-tax-optimization.png'
+            },
+            'target-planning': {
+                title: 'Короткие цели',
+                company: 'Планирование и аналитика',
+                description: 'Цели с коротким горизонтом (подушка, отпуск, крупная покупка), геймификация прогресса (стрики за пополнения, достижения за регулярность) и симулятор "что если" для визуализации сценариев без обязательств.',
+                features: ['Короткие цели: 6 мес — 2 года', 'Геймификация: стрики, бейджи за достижения', 'Симулятор "что если" без создания цели', 'Прогресс-бары и визуализация'],
+                image: 'images/ak-target-planning.png'
+            },
+            'ai-strategies': {
+                title: 'AI-стратегии',
+                company: 'Планирование и аналитика',
+                description: 'Управляемые решения из фондов АК: клиент задаёт параметры (риск, горизонт, цель), AI строит портфель и динамически меняет доли в зависимости от рынка — увеличивает денежный рынок при волатильности, перекладывает в акции при росте.',
+                features: ['Стратегии: консервативная, сбалансированная, агрессивная', 'AI + аналитики управляют аллокацией', 'Автоматическое объяснение действий', 'Аналог автоследования для УК'],
+                image: 'images/ak-ai-strategies.png'
+            },
+            'stress-testing': {
+                title: 'Стресс-тестирование',
+                company: 'Планирование и аналитика',
+                description: 'Развитие существующего функционала: позитивные сценарии (рост нефти, снижение ставки), рекомендации по улучшению портфеля, исторические кризисы (2008, 2014, 2022) и кнопка "Улучшить" с переходом к действиям.',
+                features: ['Позитивные и негативные сценарии', 'Исторические кризисы (2008, 2014, 2022)', 'Рекомендации по улучшению устойчивости', 'Кнопка "Улучшить" → переход к действиям'],
+                image: 'images/ak-stress-test.png'
+            },
+            'portfolio-health': {
+                title: 'Здоровье портфеля',
+                company: 'Планирование и аналитика',
+                description: 'Комплексная оценка портфеля по ключевым параметрам: диверсификация, уровень риска, наличие классов активов, ликвидность — с рекомендациями по улучшению каждого показателя. Общий скор + разбивка + "Как улучшить".',
+                features: ['Общий скор здоровья (например, 7/10)', 'Диверсификация и баланс классов активов', 'Оценка ликвидности портфеля', 'Персональные рекомендации по улучшению'],
+                image: 'images/ak-portfolio-health.png'
+            },
+            'yield-scenarios': {
+                title: 'Сценарии доходности',
+                company: 'Планирование и аналитика',
+                description: 'Сценарии будущей доходности для ПИФов и стратегий ДУ: оптимистичный, базовый, пессимистичный — в карточках как купленных продуктов, так и новых на витрине. Регуляторно корректно.',
+                features: ['Три сценария: оптимистичный, базовый, пессимистичный', 'Отображение в карточках продуктов', 'Соответствие требованиям регулятора', 'Визуализация диапазона доходности'],
+                image: 'images/ak-return-scenarios.png'
+            },
+            'social-network': {
+                title: 'Соцсеть для инвесторов',
+                company: 'Социальные функции',
+                description: 'Лента экспертного контента от аналитиков и управляющих АК, шеринг достижений клиентов, модерируемые истории успеха, Q&A-сессии — без обсуждения сделок и критики управления.',
+                features: ['Контент от экспертов АК', 'Шеринг достижений клиентов', 'Модерируемые Q&A с управляющими', 'Позитивный UGC без критики'],
+                image: 'images/ak-social-feed.png'
+            },
+            'zpif-visualization': {
+                title: 'Визуализация ЗПИФ',
+                company: 'Альтернативные активы',
+                description: 'Превращаем абстрактные паи в реальные активы: карта объектов, фото зданий, "твоя доля = 47 м²", арендаторы и их платежи, push о событиях и stories-отчёты управляющего.',
+                features: ['Карта с пинами объектов + галерея фото', '"Мои метры" — доля в квадратных метрах', 'Арендаторы и их платежи вам', 'Push: новый арендатор, выплата дохода'],
+                image: 'images/ak-real-estate.png'
+            },
+            'aggregation': {
+                title: 'Агрегация внешних активов',
+                company: 'Альтернативные активы',
+                description: 'Отображение активов из других компаний для полной картины благосостояния. Зависит от подключения к OpenAPI ЦБ (пока УК не в пилоте) — без этого только ручной ввод.',
+                features: ['Единый дашборд всех активов', 'Интеграция через OpenAPI ЦБ (в перспективе)', 'Круговая диаграмма распределения', 'Общая сумма благосостояния'],
+                image: 'images/ak-external-assets.png'
+            },
+            'crypto': {
+                title: 'Криптовалюты',
+                company: 'Альтернативные активы',
+                description: 'Два варианта входа в крипторынок: (A) готовые продукты — фонд или стратегия с криптоактивами на витрине, (B) торговля в ИДУ — котировки, покупка/продажа криптовалют в рамках индивидуального портфеля.',
+                features: ['Фонд/стратегия с криптоактивами', 'Котировки Bitcoin, Ethereum и др.', 'Торговля в рамках ИДУ', 'Соответствие регуляторике ЦБ'],
+                image: 'images/ak-crypto.png'
+            },
+            'advisor-chat': {
+                title: 'Персональный канал с ИК',
+                company: 'Инвестиционный консультант',
+                description: 'Выделенный чат с персональным инвестиционным консультантом внутри приложения: переписка, история рекомендаций, офферы с возможностью принять в один клик, запись на звонок/встречу.',
+                features: ['Профиль ИК в шапке чата', 'Офферы как actionable карточки', 'История всех рекомендаций', 'Запись на звонок/видеовстречу'],
+                image: 'images/ak-consultant-chat.png'
+            },
+            'lifestyle-marketplace': {
+                title: 'Lifestyle Marketplace',
+                company: 'Lifestyle & Партнёры',
+                description: 'Маркетплейс премиальных продуктов и услуг: недвижимость, авто, путешествия, консьерж-сервисы. Партнёрские предложения с эксклюзивными условиями для клиентов АК.',
+                features: ['Недвижимость, авто, путешествия', 'Эксклюзивные условия для клиентов АК', 'Консьерж-сервисы и рестораны', 'Доступ по уровню портфеля'],
+                image: 'images/ak-lifestyle.png'
+            },
+            'charity': {
+                title: 'Благотворительность',
+                company: 'Lifestyle & Партнёры',
+                description: 'Участие клиентов в благотворительном эндаументе АК: механики сбора (округление, % от дохода), отчёты о результатах с фото, бейджи в геймификации и шеринг в соцсетях.',
+                features: ['Округление покупок на благотворительность', 'Процент от дивидендов/купонов', 'Фотоотчёты от фонда', 'Бейдж "Филантроп" в геймификации'],
+                image: 'images/ak-charity.png'
+            },
+            'family-investing': {
+                title: 'Семейные инвестиции',
+                company: 'Lifestyle & Партнёры',
+                description: 'Совместные счета для семьи: родители + дети, супруги. Общий портфель с разными уровнями доступа — кто-то может только смотреть, кто-то управлять. Визуализация общих целей.',
+                features: ['Совместный портфель (2+ участника)', 'Роли: владелец, наблюдатель, управляющий', 'Общие цели семьи с трекингом', 'Счета детей в приложении родителя'],
+                image: 'images/ak-family.png'
+            },
+            'wellness': {
+                title: 'Wellness-интеграции',
+                company: 'Lifestyle & Партнёры',
+                description: 'Связка с продуктом Wellness от Альфа-Капитал: пуши о здоровье в контексте финансов, интеграция страховых продуктов, "баланс здоровья и благосостояния".',
+                features: ['Интеграция с Альфа-Wellness', 'Страховые продукты', 'Баланс здоровья и благосостояния', 'Пуши о здоровье'],
+                image: 'images/ak-wellness.png'
+            },
+            'education': {
+                title: 'Образовательный контент',
+                company: 'Каналы и UX',
+                description: 'Микрообучение в стиле Duolingo: раз в неделю пуш с коротким уроком, стрики за просмотры, факты "Знаете ли вы...", контекстные подсказки при покупке продуктов.',
+                features: ['Короткие уроки раз в неделю', 'Стрики за регулярные просмотры', 'Факты "Знаете ли вы?"', 'Контекстные подсказки при покупке'],
+                image: 'images/ak-education.png'
+            },
+            'smart-cash': {
+                title: 'Умный кэш',
+                company: 'Инфраструктура',
+                description: 'Аналог накопительного счёта внутри приложения АК: хаб на базе фонда денежного рынка с доходностью выше среднего депозита. Простой интерфейс для пополнения и вывода.',
+                features: ['Доходность выше банковских депозитов', 'Вывод в любой момент', 'Пополнение в один клик', 'Точка входа для новых клиентов'],
+                image: 'images/ak-smart-cash.png'
+            }
+        };
+
+        // Modal functionality for Alfa cards
+        const alfaCards = document.querySelectorAll('.alfa-card');
+        alfaCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't open modal if clicking on decision buttons
+                if (e.target.closest('.decision-btn')) return;
+
+                const ideaId = card.dataset.ideaId;
+                const data = alfaIdeas[ideaId];
+                if (!data) return;
+
+                document.getElementById('modal-company').textContent = data.company;
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-description').textContent = data.description;
+                document.getElementById('modal-link').style.display = 'none';
+
+                const featuresHtml = data.features.map(f => `<div class="feature-item">✓ ${f}</div>`).join('');
+                document.getElementById('modal-features').innerHTML = featuresHtml;
+
+                const modalImage = document.getElementById('modal-image');
+                modalImage.innerHTML = `<img src="${data.image}" alt="${data.title}" style="width:100%;max-height:400px;object-fit:contain;">`;
+
+                modal.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
