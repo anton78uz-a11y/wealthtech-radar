@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лучшие практики: фонды недвижимости | Альфа-Капитал</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E31235;
+            --primary-dark: #B80E2A;
+            --primary-glow: rgba(227, 18, 53, 0.08);
+            --secondary: #F0F1F5;
+            --accent: #E4E6ED;
+            --bg-dark: #F7F8FA;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F5F5FA;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555570;
+            --text-muted: #8888A0;
+            --border: rgba(0,0,0,0.08);
+            --border-hover: rgba(227,18,53,0.3);
+            --green: #16A34A;
+            --green-bg: rgba(22,163,74,0.08);
+            --yellow: #CA8A04;
+            --yellow-bg: rgba(202,138,4,0.08);
+            --red: #DC2626;
+            --red-bg: rgba(220,38,38,0.08);
+            --blue: #2563EB;
+            --blue-bg: rgba(37,99,235,0.08);
+            --gradient-hero: linear-gradient(135deg, #E31235 0%, #FF6B6B 50%, #ee0979 100%);
+            --gradient-2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-3: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --gradient-4: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+            --gradient-5: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-6: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-7: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .bg-noise {
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none;
+            background:
+                radial-gradient(ellipse at 15% 10%, rgba(227,18,53,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 80%, rgba(102,126,234,0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(17,153,142,0.02) 0%, transparent 60%),
+                var(--bg-dark);
+        }
+        h1,h2,h3,.display { font-family: 'Playfair Display', Georgia, serif; }
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ── Sticky Nav ── */
+        .sticky-nav {
+            position: fixed; top:0; left:0; width:100%; z-index:100;
+            background: rgba(255,255,255,0.9); backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid var(--border);
+            transform: translateY(-100%); transition: transform 0.4s ease;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        }
+        .sticky-nav.visible { transform: translateY(0); }
+        .sticky-nav-inner {
+            max-width: 1320px; margin: 0 auto; padding: 0 40px;
+            display: flex; align-items: center; justify-content: space-between; height: 60px;
+        }
+        .sticky-nav .logo-sm { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
+        .sticky-nav .logo-sm span { color: var(--primary); }
+        .nav-links { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500;
+            padding: 6px 14px; border-radius: 20px; white-space: nowrap;
+            transition: all 0.3s; letter-spacing: 0.3px;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--primary); background: var(--primary-glow); }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            padding: 120px 0 80px; position: relative; text-align: center;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(227,18,53,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 24px; background: var(--primary-glow);
+            border: 1px solid rgba(227,18,53,0.25); border-radius: 50px;
+            font-size: 13px; font-weight: 600; color: var(--primary);
+            margin-bottom: 32px; letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px); font-weight: 800; line-height: 1.05;
+            margin-bottom: 24px; letter-spacing: -1px;
+        }
+        .hero h1 em {
+            font-style: italic; font-weight: 400;
+            background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(16px, 2vw, 22px); color: var(--text-secondary);
+            max-width: 680px; margin: 0 auto 56px; font-weight: 300; line-height: 1.6;
+        }
+        .stats-row {
+            display: flex; justify-content: center; gap: clamp(32px, 6vw, 80px);
+            flex-wrap: wrap; margin-bottom: 48px;
+        }
+        .stat { text-align: center; }
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1;
+            background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat-label {
+            font-size: 12px; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 2px; margin-top: 8px; font-weight: 600;
+        }
+        .scroll-hint {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+        .scroll-hint svg { width: 20px; height: 20px; stroke: var(--text-muted); }
+
+        /* ── Section Headers ── */
+        .section { padding: 100px 0; }
+        .section-label {
+            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--primary); margin-bottom: 12px; font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.15;
+            margin-bottom: 16px; letter-spacing: -0.5px;
+        }
+        .section-desc {
+            font-size: 17px; color: var(--text-secondary); max-width: 640px;
+            line-height: 1.7; font-weight: 300;
+        }
+        .section-header { margin-bottom: 56px; }
+
+        /* ── Cards Grid ── */
+        .cards-grid { display: grid; gap: 20px; }
+        .cards-grid-2 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+        .cards-grid-3 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        .cards-grid-4 { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; position: relative;
+            transition: all 0.4s cubic-bezier(.16,1,.3,1); overflow: hidden;
+        }
+        .card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 40px var(--primary-glow);
+        }
+        .card-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 16px; flex-shrink: 0;
+        }
+        .card-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .card-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-meta { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+
+        /* ── Source Cards ── */
+        .source-card .card-num {
+            position: absolute; top: 20px; right: 20px;
+            font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 800;
+            color: rgba(0,0,0,0.05); line-height: 1;
+        }
+
+        /* ── Platform Cards ── */
+        .platform-card {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .platform-card .platform-header {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .platform-card .platform-flag { font-size: 24px; }
+        .platform-card .platform-name { font-size: 16px; font-weight: 700; }
+        .platform-card .platform-type { font-size: 12px; color: var(--text-muted); }
+        .platform-metrics {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        }
+        .metric-box {
+            background: rgba(0,0,0,0.03); border-radius: 8px; padding: 10px 12px;
+        }
+        .metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .metric-value { font-size: 14px; font-weight: 600; margin-top: 2px; }
+
+        /* ── Trends ── */
+        .trend-card {
+            display: flex; gap: 16px; align-items: flex-start;
+        }
+        .trend-num {
+            font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800;
+            color: var(--primary); flex-shrink: 0; width: 40px; text-align: right;
+            opacity: 0.7;
+        }
+        .trend-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .trend-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── AS-IS Screenshots ── */
+        .screenshots-row {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px; margin: 32px 0;
+        }
+        .screenshot-item {
+            cursor: pointer; border-radius: 12px; overflow: hidden;
+            border: 1px solid var(--border); transition: all 0.3s;
+            position: relative;
+        }
+        .screenshot-item:hover {
+            border-color: var(--border-hover); transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .screenshot-item img { width: 100%; display: block; aspect-ratio: 9/19.5; object-fit: cover; }
+        .screenshot-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 20px 10px 10px; font-size: 10px; color: #ccc; font-weight: 500;
+        }
+
+        /* ── Strength / Bug Cards ── */
+        .strength-card { border-left: 3px solid var(--blue); }
+        .bug-card { border-left: 3px solid var(--yellow); }
+        .strength-card .card-icon { background: var(--blue-bg); color: var(--blue); }
+        .bug-card .card-icon { background: var(--yellow-bg); color: var(--yellow); }
+
+        /* ── Filter Bar ── */
+        .filter-bar {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;
+        }
+        .filter-btn {
+            padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 500;
+            border: 1px solid var(--border); background: transparent; color: var(--text-secondary);
+            cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+        .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+        /* ── Practice Cards ── */
+        .practice-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            overflow: hidden; transition: all 0.4s; cursor: pointer;
+        }
+        .practice-card:hover { border-color: var(--border-hover); }
+        .practice-card.hidden { display: none; }
+        .practice-header {
+            padding: 24px 28px; display: flex; align-items: center; gap: 16px;
+        }
+        .practice-emoji { font-size: 28px; flex-shrink: 0; }
+        .practice-num {
+            font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700;
+            color: var(--text-muted); width: 28px; flex-shrink: 0;
+        }
+        .practice-info { flex: 1; min-width: 0; }
+        .practice-name { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .practice-leader { font-size: 12px; color: var(--text-muted); }
+        .practice-badges { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+        .badge {
+            padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-green { background: var(--green-bg); color: var(--green); }
+        .badge-yellow { background: var(--yellow-bg); color: var(--yellow); }
+        .badge-red { background: var(--red-bg); color: var(--red); }
+        .practice-expand {
+            color: var(--text-muted); font-size: 20px; flex-shrink: 0; transition: transform 0.3s;
+            width: 28px; text-align: center;
+        }
+        .practice-card.open .practice-expand { transform: rotate(180deg); }
+        .practice-details {
+            max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(.16,1,.3,1);
+        }
+        .practice-card.open .practice-details { max-height: 600px; }
+        .practice-details-inner {
+            padding: 0 28px 24px; border-top: 1px solid var(--border);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 20px;
+        }
+        .detail-block {}
+        .detail-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .detail-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── Matrix Table ── */
+        .matrix-wrapper {
+            overflow-x: auto; border-radius: 16px; border: 1px solid var(--border);
+            background: var(--bg-card);
+        }
+        .matrix-wrapper::-webkit-scrollbar { height: 6px; }
+        .matrix-wrapper::-webkit-scrollbar-track { background: var(--bg-card); }
+        .matrix-wrapper::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+        .matrix {
+            width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1100px;
+        }
+        .matrix th {
+            padding: 14px 12px; text-align: center; font-weight: 600;
+            background: rgba(0,0,0,0.02); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 2; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary);
+        }
+        .matrix th:first-child { text-align: left; min-width: 200px; position: sticky; left: 0; z-index: 3; background: var(--bg-card); }
+        .matrix td {
+            padding: 10px 12px; text-align: center; border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .matrix td:first-child {
+            text-align: left; font-weight: 500; position: sticky; left: 0;
+            background: var(--bg-card); z-index: 1; color: var(--text-primary);
+        }
+        .matrix tr:hover td { background: rgba(0,0,0,0.02); }
+        .matrix tr:hover td:first-child { background: var(--bg-card-hover); }
+        .m-yes { color: var(--green); }
+        .m-partial { color: var(--yellow); }
+        .m-no { color: var(--red); opacity: 0.5; }
+        .m-unique { color: var(--blue); }
+        .matrix .col-ak { background: rgba(227,18,53,0.04) !important; }
+
+        /* ── GAP Cards ── */
+        .gap-section { margin-bottom: 48px; }
+        .gap-section-title {
+            font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .gap-count {
+            background: rgba(0,0,0,0.05); padding: 2px 10px;
+            border-radius: 12px; font-size: 12px; color: var(--text-muted); font-weight: 600;
+        }
+        .gap-card-critical { border-left: 3px solid var(--red); }
+        .gap-card-medium { border-left: 3px solid var(--yellow); }
+        .gap-card-nice { border-left: 3px solid var(--text-muted); }
+        .gap-card-strength { border-left: 3px solid var(--blue); }
+
+        /* ── Blue Ocean Section ── */
+        .blue-ocean {
+            background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(99,102,241,0.05) 100%);
+            border: 1px solid rgba(59,130,246,0.15); border-radius: 24px;
+            padding: 48px; margin: 40px 0;
+        }
+        .formula-box {
+            background: rgba(0,0,0,0.04); border-radius: 12px; padding: 24px 32px;
+            font-family: 'Courier New', monospace; font-size: 18px; text-align: center;
+            margin: 24px 0; border: 1px solid rgba(59,130,246,0.2);
+            color: var(--blue);
+        }
+        .meters-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px; margin: 24px 0;
+        }
+        .meter-item {
+            background: rgba(0,0,0,0.04); border-radius: 10px; padding: 14px 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .meter-value {
+            font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;
+            color: var(--blue); white-space: nowrap;
+        }
+        .meter-label { font-size: 13px; color: var(--text-secondary); }
+
+        /* ── Antipatterns ── */
+        .antipattern-row {
+            display: flex; gap: 12px; align-items: flex-start;
+            padding: 16px 0; border-bottom: 1px solid var(--border);
+        }
+        .antipattern-row:last-child { border-bottom: none; }
+        .antipattern-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: var(--red-bg); color: var(--red);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0;
+        }
+        .antipattern-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+        .antipattern-desc { font-size: 13px; color: var(--text-secondary); }
+        .antipattern-source { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+        /* ── Roadmap ── */
+        .roadmap-phase { margin-bottom: 48px; }
+        .phase-header {
+            display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+            padding-bottom: 16px; border-bottom: 1px solid var(--border);
+        }
+        .phase-dot {
+            width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+        }
+        .phase-dot-green { background: var(--green); box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+        .phase-dot-yellow { background: var(--yellow); box-shadow: 0 0 20px rgba(234,179,8,0.4); }
+        .phase-dot-red { background: var(--red); box-shadow: 0 0 20px rgba(239,68,68,0.4); }
+        .phase-title { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; }
+        .phase-subtitle { font-size: 13px; color: var(--text-muted); }
+        .roadmap-item {
+            display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: start;
+            padding: 16px 0; border-bottom: 1px solid var(--border);
+        }
+        .roadmap-item:last-child { border-bottom: none; }
+        .roadmap-num {
+            font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;
+            color: var(--text-muted); text-align: right;
+        }
+        .roadmap-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .roadmap-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+        .roadmap-time {
+            font-size: 12px; color: var(--text-muted); white-space: nowrap;
+            background: rgba(0,0,0,0.04); padding: 4px 10px; border-radius: 6px;
+        }
+
+
+        /* ── Practice Groups (NEW) ── */
+        .group-filter {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 48px;
+        }
+        .group-btn {
+            padding: 10px 20px; border-radius: 50px; font-size: 13px; font-weight: 600;
+            border: 1px solid var(--border); background: transparent; color: var(--text-secondary);
+            cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .group-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+        .group-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .bp-group { margin-bottom: 64px; }
+        .bp-group.hidden { display: none; }
+        .bp-group-header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+        }
+        .bp-group-icon { font-size: 32px; }
+        .bp-group-title { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700; }
+        .bp-group-desc { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+        .bp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+        .bp-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            overflow: hidden; transition: all 0.4s cubic-bezier(.16,1,.3,1); cursor: pointer;
+        }
+        .bp-card:hover {
+            border-color: var(--border-hover); transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 40px var(--primary-glow);
+        }
+        .bp-card-visual {
+            height: 200px; background-size: cover; background-position: center;
+            position: relative; display: flex; align-items: flex-end; padding: 12px;
+        }
+        .bp-card-visual.has-img::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+            background: linear-gradient(transparent, var(--bg-card));
+        }
+        .bp-card-placeholder {
+            height: 140px; display: flex; align-items: center; justify-content: center;
+            font-size: 52px; position: relative;
+        }
+        .bp-grad-1 { background: linear-gradient(135deg, rgba(227,18,53,0.10), rgba(255,107,107,0.05)); }
+        .bp-grad-2 { background: linear-gradient(135deg, rgba(102,126,234,0.10), rgba(118,75,162,0.05)); }
+        .bp-grad-3 { background: linear-gradient(135deg, rgba(17,153,142,0.10), rgba(56,239,125,0.05)); }
+        .bp-grad-4 { background: linear-gradient(135deg, rgba(168,85,247,0.10), rgba(99,102,241,0.05)); }
+        .bp-tag {
+            position: absolute; top: 12px; right: 12px;
+            padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 600;
+            backdrop-filter: blur(10px); z-index: 1;
+        }
+        .bp-tag-green { background: rgba(34,197,94,0.2); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+        .bp-tag-yellow { background: rgba(234,179,8,0.2); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
+        .bp-card-body { padding: 20px 24px; }
+        .bp-card-leader {
+            font-size: 11px; color: var(--primary); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+        }
+        .bp-card-title {
+            font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 700;
+            margin-bottom: 10px; line-height: 1.3;
+        }
+        .bp-card-desc {
+            font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;
+        }
+        .bp-card-ak {
+            font-size: 12px; color: var(--text-muted); line-height: 1.5;
+            padding: 10px 12px; background: rgba(0,0,0,0.03); border-radius: 8px;
+            border-left: 2px solid var(--primary);
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(20px);
+            z-index: 200; align-items: center; justify-content: center; padding: 40px;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw; max-height: 85vh; border-radius: 16px;
+            box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+        }
+        .lightbox-close {
+            position: absolute; top: 24px; right: 24px;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: none;
+            color: #fff; font-size: 24px; cursor: pointer;
+        }
+        .lightbox-caption {
+            position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+            font-size: 14px; color: var(--text-secondary); text-align: center;
+        }
+
+        /* ── Card Detail Modal ── */
+        .card-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 300; align-items: center; justify-content: center; padding: 24px;
+        }
+        .card-modal.active { display: flex; }
+        .card-modal-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(12px);
+        }
+        .card-modal-content {
+            position: relative; z-index: 1;
+            background: var(--bg-card); border-radius: 20px;
+            max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.25);
+            animation: cardModalIn 0.3s cubic-bezier(.16,1,.3,1);
+        }
+        @keyframes cardModalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .card-modal-content::-webkit-scrollbar { width: 6px; }
+        .card-modal-content::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+        .card-modal-close {
+            position: absolute; top: 16px; right: 16px; z-index: 2;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(0,0,0,0.45); border: none;
+            color: #fff; font-size: 22px; cursor: pointer; transition: background 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-modal-close:hover { background: rgba(0,0,0,0.7); }
+        .card-modal-image {
+            width: 100%; background: #f0f1f5; border-radius: 20px 20px 0 0;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .card-modal-image img {
+            width: 100%; max-height: 420px; object-fit: contain; display: block;
+        }
+        .card-modal-body { padding: 28px 32px 32px; }
+        .card-modal-leader {
+            font-size: 12px; color: var(--primary); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+        }
+        .card-modal-title {
+            font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700;
+            margin-bottom: 14px; line-height: 1.3;
+        }
+        .card-modal-desc {
+            font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;
+        }
+        .card-modal-ak {
+            font-size: 13px; color: var(--text-muted); line-height: 1.6;
+            padding: 14px 16px; background: rgba(0,0,0,0.03); border-radius: 10px;
+            border-left: 3px solid var(--primary);
+        }
+        .card-modal-extended {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+            margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 60px 0; border-top: 1px solid var(--border); text-align: center;
+        }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+        .footer-logo span { color: var(--primary); }
+        .footer p { color: var(--text-muted); font-size: 13px; line-height: 1.8; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .section { padding: 60px 0; }
+            .sticky-nav-inner { padding: 0 16px; }
+            .nav-links { display: none; }
+            .practice-details-inner { grid-template-columns: 1fr; }
+            .practice-badges { justify-content: flex-start; }
+            .practice-header { flex-wrap: wrap; gap: 10px; }
+            .blue-ocean { padding: 28px 20px; }
+            .formula-box { font-size: 13px; padding: 16px; overflow-x: auto; }
+            .roadmap-item { grid-template-columns: 30px 1fr; }
+            .roadmap-time { grid-column: 2; }
+            .bp-grid { grid-template-columns: 1fr; }
+            .bp-card-placeholder { height: 100px; font-size: 36px; }
+            .card-modal { padding: 12px; }
+            .card-modal-image img { max-height: 280px; }
+            .card-modal-body { padding: 20px; }
+            .card-modal-title { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-noise"></div>
+
+    <!-- Sticky Nav -->
+    <nav class="sticky-nav" id="stickyNav">
+        <div class="sticky-nav-inner">
+            <div class="logo-sm"><span>Альфа</span>-Капитал</div>
+            <div class="nav-links">
+                <a href="#practices" class="nav-link">Лучшие практики</a>
+                <a href="#meters" class="nav-link">Увидь метры</a>
+                <a href="#gaps" class="nav-link">GAP-анализ</a>
+                <a href="#antipatterns" class="nav-link">Антипаттерны</a>
+                <a href="#market" class="nav-link">Платформы</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-badge reveal">WealthTech Radar &middot; Deep Research &middot; Февраль 2026</div>
+            <h1 class="reveal reveal-delay-1">Лучшие практики:<br><em>фонды недвижимости</em><br>в мобильных приложениях</h1>
+            <p class="hero-sub reveal reveal-delay-2">Сводный анализ 11 мировых платформ инвестиций в недвижимость. Конкретные рекомендации для МП Альфа-Капитал.</p>
+            <div class="stats-row reveal reveal-delay-3">
+                <div class="stat"><div class="stat-value">11</div><div class="stat-label">Платформ</div></div>
+                <div class="stat"><div class="stat-value">5</div><div class="stat-label">Deep Research</div></div>
+                <div class="stat"><div class="stat-value">237</div><div class="stat-label">Скриншотов</div></div>
+                <div class="stat"><div class="stat-value">13</div><div class="stat-label">Лучших практик</div></div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            Скролл вниз
+        </div>
+    </section>
+
+    <!-- TOP-20 Practices -->
+    <section class="section" id="practices" style="background:rgba(0,0,0,0.015);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">01 / Лучшие практики</div>
+                <h2 class="section-title">Лучшие практики мировых платформ</h2>
+                <p class="section-desc">13 инноваций из 11 платформ инвестиций в недвижимость, сгруппированных по 4 направлениям</p>
+            </div>
+
+            <div class="group-filter reveal" id="groupFilter">
+                <button class="group-btn active" data-group="all" onclick="filterGroup('all')">Все (13)</button>
+                <button class="group-btn" data-group="transparency" onclick="filterGroup('transparency')">🔍 Прозрачность и данные</button>
+                <button class="group-btn" data-group="visual" onclick="filterGroup('visual')">🗺 Визуализация</button>
+                <button class="group-btn" data-group="content" onclick="filterGroup('content')">📰 Контент и engagement</button>
+                <button class="group-btn" data-group="tools" onclick="filterGroup('tools')">🔧 Инструменты</button>
+            </div>
+
+            <!-- Group 1: Прозрачность и данные -->
+            <div class="bp-group reveal" data-group="transparency">
+                <div class="bp-group-header">
+                    <div class="bp-group-icon">🔍</div>
+                    <div>
+                        <h3 class="bp-group-title">Прозрачность и данные</h3>
+                        <p class="bp-group-desc">Как показывать инвестору, что происходит с его деньгами и активами</p>
+                    </div>
+                </div>
+                <div class="bp-grid">
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-annualized-net-returns-2024.png')">
+                            <span class="bp-tag bp-tag-green">Quick Win</span>
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise</div>
+                            <h4 class="bp-card-title">Разделение доходности на компоненты</h4>
+                            <p class="bp-card-desc">Два компонента дохода: дивиденды (рентный доход) + appreciation (рост стоимости активов). Инвестор видит структуру, а не одну абстрактную цифру.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> только одна общая цифра доходности. Инвестор не понимает, откуда приходят деньги.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте Fundrise: Dividends 6.4% + Appreciation 1.9% = Net Return 8.3%. Внизу таблица: Gross dividends $6,396.87, Advisory fees ($77.76), итого Dividends $6,319.11, Appreciation $1,914.04. Каждый год разбит на столбчатую диаграмму. Для АК адаптация: рентный доход (арендные платежи) + переоценка стоимости объекта = итоговая доходность пая. Инвестор понимает, что доход идёт из двух источников, и видит вклад каждого.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/crowdstreet-deal-irr.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise &middot; CrowdStreet &middot; Arrived</div>
+                            <h4 class="bp-card-title">Расширенные метрики объекта</h4>
+                            <p class="bp-card-desc">Cap rate, арендная ставка руб/м², список арендаторов, срок аренды, занятость, класс объекта. Полная карточка как у профессионального инвестора.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> только базовые данные — площадь, дата постройки, % аренды. Нет cap rate и детализации арендаторов.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте CrowdStreet: deal page с Targeted Investor IRR 15.7%, Equity Multiple 2.0x, Investment Period 5 лет. Каждый объект — полноценный «проспект» с ключевыми метриками на первом экране. Arrived Homes добавляет Dividend Yield, рейтинг района, рост стоимости. Для АК: добавить cap rate (отношение арендного дохода к стоимости объекта), список и доли ключевых арендаторов, WAULT (средневзвешенный срок аренды), класс объекта (A/B/C), заполняемость.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-portfolio-breakdown.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise</div>
+                            <h4 class="bp-card-title">Capital Stack Diagram</h4>
+                            <p class="bp-card-desc">Визуализация структуры капитала: senior debt, mezzanine, preferred equity, common equity. Инвестор видит, где его деньги в «стеке» и какой уровень риска.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> не реализовано. Структура капитала фонда не визуализируется.</div>
+                            <div class="bp-card-extended" style="display:none;"><strong>Что такое Capital Stack:</strong> каждый объект недвижимости финансируется несколькими слоями капитала — от банковского кредита (senior debt, самый безопасный) до собственного капитала (common equity, самый рискованный). Fundrise показывает инвестору, в каком «слое» находятся его деньги. На скриншоте: Real Estate 67.8%, Private Credit, Fixed Income — диаграмма распределения портфеля. <strong>Для ЗПИФ Альфа-Капитал:</strong> показать долю заёмных средств фонда vs собственных, приоритет выплат пайщикам, LTV (loan-to-value) по каждому объекту. Это повышает прозрачность и помогает инвестору оценить уровень риска.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/crowdstreet-deal.jpg')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise &middot; CrowdStreet</div>
+                            <h4 class="bp-card-title">Управление ожиданиями ликвидности</h4>
+                            <p class="bp-card-desc">Lock-up период на видном месте. Confirmation step при покупке: «Вы понимаете, что деньги заморожены на X лет?». Честность создаёт доверие и снижает отток.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> срок «5 лет» спрятан в bottom sheet. Ключевой параметр закрытого фонда недостаточно заметен.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте CrowdStreet: три deal-карточки, каждая с «Targeted Investment Period» крупным шрифтом — 5 years, 3 years, 2 years. Holding period — первое, что видит инвестор. Fundrise предупреждает: «investments are intended to be held long-term (5+ years)». <strong>Антипаттерн:</strong> непрозрачность ликвидности — жалоба #1 у Fundrise. Инвесторы не понимали, что деньги заморожены. <strong>Для АК:</strong> визуальный индикатор оставшегося срока на карточке ЗПИФ (например, «До погашения: 3 года 2 мес»), confirmation step при покупке, push-напоминание за 6 мес до окончания lock-up.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Group 2: Визуализация и навигация -->
+            <div class="bp-group reveal" data-group="visual">
+                <div class="bp-group-header">
+                    <div class="bp-group-icon">🗺</div>
+                    <div>
+                        <h3 class="bp-group-title">Визуализация и навигация</h3>
+                        <p class="bp-group-desc">Как превратить абстрактные паи в осязаемые объекты недвижимости</p>
+                    </div>
+                </div>
+                <div class="bp-grid">
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/arrived-property-card.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise &middot; Roofstock &middot; Arrived Homes</div>
+                            <h4 class="bp-card-title">Интерактивная карта объектов портфеля</h4>
+                            <p class="bp-card-desc">Единая карта всех объектов с интерактивными пинами. Нажатие — мини-карточка объекта с фото, метриками и ссылкой на детали. Wow-эффект при первом входе.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> карта только внутри одного объекта. Единой карты портфеля нет. Deep links «Как добраться» — уникальная фича.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте Arrived Homes: маркетплейс с фото-карточками конкретных домов. Каждая карточка — фото объекта, адрес, ключевые метрики. У Fundrise — GPS-карта на странице каждого объекта, но единой карты портфеля нет. У Roofstock — поиск по карте с фильтрами. <strong>Возможность для АК:</strong> единая карта России (Яндекс.Карты API) с пинами всех объектов ЗПИФ. При нажатии — мини-карточка: фото, площадь, заполняемость, доходность. Уникальная фича АК — deep links «Как добраться» / «Вызвать такси к объекту».</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-mobile-app.jpg')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise</div>
+                            <h4 class="bp-card-title">Выделение недвижимости в секцию портфеля</h4>
+                            <p class="bp-card-desc">Отдельная вкладка «Real Estate» с собственной аналитикой, картой, метриками доходности. Недвижимость — не просто строка в списке активов.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> ЗПИФ перемешаны с акциями и облигациями. Недвижимость «теряется» среди 20+ продуктов в портфеле.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте: мобильное приложение Fundrise с выделенной вкладкой Real Estate, собственным дашбордом, графиком роста портфеля. Недвижимость — отдельная «вселенная» с собственной навигацией. <strong>Для АК:</strong> выделенная секция «Недвижимость» в портфеле с: суммарной стоимостью, общей доходностью ЗПИФ, картой объектов, календарём выплат, списком фондов. Превратить ЗПИФ из «ещё одного продукта» в полноценный раздел приложения.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/arrived-marketplace.png')">
+                            <span class="bp-tag bp-tag-yellow">Medium</span>
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Arrived Homes</div>
+                            <h4 class="bp-card-title">Карточка продукта в стиле Airbnb</h4>
+                            <p class="bp-card-desc">Фото-карусель, ключевые метрики, бейджи статуса, прогресс-бар заполнения фонда, Trust Signals, яркий CTA. Видео с дрона даёт +20-30% к конверсии.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> 3D-рендер есть, но нет бейджей, прогресс-бара заполнения, видео с дрона, Trust Signals.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте Arrived Homes: маркетплейс с карточками отдельных домов. Каждая карточка содержит: фото-карусель, бейдж статуса (Funded / Open), прогресс-бар заполнения, Dividend Yield, рейтинг района, число инвесторов. Дизайн как у Airbnb — знакомый и доверительный. <strong>Для АК:</strong> переработать карточку ЗПИФ по образцу — добавить фото-карусель объектов (вместо одного рендера), бейдж «Открыт для инвестиций» / «Собрано 87%», прогресс-бар сбора, Trust Signals (число пайщиков, рейтинг УК). Видео с дрона по объектам — максимальный wow-эффект.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-benchmark-static.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise &middot; Arrived Homes</div>
+                            <h4 class="bp-card-title">Бенчмаркинг доходности</h4>
+                            <p class="bp-card-desc">Сравнение доходности фонда с S&amp;P 500, депозитами, инфляцией. В контексте РФ — с ключевой ставкой ЦБ и вкладами. Ответ на вопрос «хорошо ли я вложил?».</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> бенчмаркинг полностью отсутствует. Инвестор видит +3.79% без контекста.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте: сравнение Fundrise Starter vs Vanguard REIT ETF (VNQ) за 6 лет. $1,000 → $1,900 (Fundrise) vs $1,250 (VNQ). Визуально видно, что Fundrise обошёл публичный REIT. Arrived Homes сравнивает свою доходность с S&amp;P 500 и депозитами. <strong>Для АК (адаптация под РФ):</strong> «Ваш ЗПИФ +12.5% vs Депозит Сбера +8.5% vs Инфляция +7.3%». Линейный график за период владения. Ключевой ставке ЦБ — главный бенчмарк для российского инвестора. Также: сравнение с индексом Мосбиржи, ИПЦ, средней доходностью жилой недвижимости.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Group 3: Контент и engagement -->
+            <div class="bp-group reveal" data-group="content">
+                <div class="bp-group-header">
+                    <div class="bp-group-icon">📰</div>
+                    <div>
+                        <h3 class="bp-group-title">Контент и engagement</h3>
+                        <p class="bp-group-desc">Как удерживать инвестора между выплатами и создавать привычку открывать приложение</p>
+                    </div>
+                </div>
+                <div class="bp-grid">
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-newsfeed.png')">
+                            <span class="bp-tag bp-tag-yellow">Medium</span>
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise (1256+ обновлений)</div>
+                            <h4 class="bp-card-title">Newsfeed — персональная лента обновлений</h4>
+                            <p class="bp-card-desc">Обновления объектов, аналитика рынка, образование, письма CEO. Engagement loop: Push → Read → See growth → Add funds. Причина открывать приложение каждый день.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> 3 квартальных обзора за 9 месяцев. Ощущение «мёртвого» продукта между выплатами.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте: мобильное приложение Fundrise с лентой обновлений. Видны две записи: «New acquisition: Luxury apartment community in Anaheim, CA» (новое приобретение) и «Progress update: San Marcos property management making headway» (обновление стройки с фото до/после). Каждая запись содержит рейтинг, структуру капитала, прогнозную доходность. <strong>1256+ обновлений</strong> за историю платформы. Engagement loop: Push-уведомление → Прочитал обновление → Увидел рост → Доинвестировал. <strong>Для АК:</strong> лента из 4 типов контента: обновления объектов (стройка, сдача, ремонт), финансовые события (выплата дохода, переоценка), аналитика рынка, образовательные материалы.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/fundrise-timeline.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise (абсолютный лидер)</div>
+                            <h4 class="bp-card-title">Project Timeline — хронология объекта</h4>
+                            <p class="bp-card-desc">Вертикальная хронология: покупка → стройка → стабилизация → рефинансирование. Каждая точка с фото и метрикой. «Живая история» объекта создаёт trust.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> только текстовые bullet points в PDF. Главный инструмент прозрачности отсутствует — критический GAP.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте: вертикальный Project Timeline объекта в Fundrise. Ключевые точки: Acquired (Nov 2016) → Update с фото стройки (Jun 2018) → Paid Off (Sep 2019) → Exit Update с финальным отчётом (Oct 2019). Каждая точка кликабельна — фотогалерея, текст, метрики. Annualized return ~11%. <strong>Самый сильный инструмент прозрачности</strong> по результатам рисерча. Ни одна другая платформа не имеет аналога. <strong>Для АК:</strong> адаптировать для ЗПИФ — вертикальный таймлайн жизни объекта: покупка земли → разрешение → строительство → ввод → заселение → стабилизация. Каждый этап — фото, ключевые метрики, комментарий управляющего.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/concreit-notification.webp')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise (6x CTR через Hightouch)</div>
+                            <h4 class="bp-card-title">Rich Push с deep-link</h4>
+                            <p class="bp-card-desc">Push-уведомления с картинками объектов и прямой ссылкой на карточку. Триггеры: выплата дивидендов, новый объект, этап стройки. 6x рост CTR vs обычных пушей.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> базовые пуши без Rich Push, без персонализации, без deep-link на конкретный объект.</div>
+                            <div class="bp-card-extended" style="display:none;"><strong>Чем Rich Push отличается от обычного:</strong> обычный push = только текст, открывает главный экран. Rich Push = фото объекта + текст + deep-link → нажал и попал сразу на карточку конкретного объекта или на страницу выплаты. Fundrise использует Hightouch для персонализации: push привязан к объектам в портфеле конкретного инвестора. <strong>Результат:</strong> 6-кратный рост CTR. <strong>Лучшие триггеры по CTR:</strong> 1) выплата дивидендов, 2) обновление статуса объекта, 3) образовательный контент. Маркетинговые пуши — худший CTR. <strong>Для АК:</strong> Rich Push с фото объекта при выплате дохода, при появлении нового обновления в таймлайне, при вводе нового объекта в эксплуатацию.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Group 4: Инструменты инвестора -->
+            <div class="bp-group reveal" data-group="tools">
+                <div class="bp-group-header">
+                    <div class="bp-group-icon">🔧</div>
+                    <div>
+                        <h3 class="bp-group-title">Инструменты инвестора</h3>
+                        <p class="bp-group-desc">Функции, которые помогают инвестировать больше и умнее</p>
+                    </div>
+                </div>
+                <div class="bp-grid">
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/ak-education.png')">
+                            <span class="bp-tag bp-tag-yellow">Medium</span>
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Fundrise &middot; CrowdStreet</div>
+                            <h4 class="bp-card-title">Образовательный контент в продукте</h4>
+                            <p class="bp-card-desc">Inline tooltips для терминов (cap rate, IRR), FAQ, видеоуроки, live Q&amp;A, «How to read your portfolio». Обученный инвестор не паникует и инвестирует больше.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> 10 FAQ работают хорошо. Нет: inline tooltips, видеоуроков, live Q&amp;A сессий.</div>
+                            <div class="bp-card-extended" style="display:none;">Fundrise: «Fundrise Education» — раздел с видеоуроками, гайдами «How to read your portfolio», FAQ. Inline tooltips: при первом показе cap rate, IRR и других терминов появляется поясняющий tooltip. CrowdStreet: вебинары с управляющими проектами, deep-dive в структуру сделок. <strong>Ключевой инсайт:</strong> обученный инвестор инвестирует больше и реже паникует при просадках. <strong>Для АК:</strong> inline tooltips для терминов ЗПИФ (что такое пай, СЧА, lock-up), короткие видео от управляющих фондами, серия «Как читать отчёт по фонду», Q&amp;A сессии перед запуском нового ЗПИФ.</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card-visual has-img" style="background-image:url('images/concreit-dashboard.png')">
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-leader">Concreit &middot; Landa &middot; Fundrise</div>
+                            <h4 class="bp-card-title">Лёгкая геймификация</h4>
+                            <p class="bp-card-desc">Бейджи за первую инвестицию, прохождение обучения, регулярность. Milestone celebrations: «Ваш портфель достиг 100 000 ₽!». Мотивация без казино-эффекта.</p>
+                            <div class="bp-card-ak"><strong>В АК:</strong> геймификация полностью отсутствует. Нет бейджей, достижений, milestone celebrations.</div>
+                            <div class="bp-card-extended" style="display:none;">На скриншоте Concreit: дашборд приложения с $168K портфелем. Concreit — лидер по геймификации: Rewards-программа (+1% к доходности за активность), бейджи, еженедельные дивиденды, Instant Earn. <strong>Важно:</strong> лёгкая геймификация ≠ казино. Антипример — Landa, которая сделала trading-like UI для неликвидных активов и закрылась. <strong>Для АК:</strong> milestone celebrations («Ваш портфель ЗПИФ достиг 1 млн ₽!», «Первая выплата дохода»), бейджи за регулярные инвестиции, прохождение обучения. Мотивация долгосрочного поведения, а не спекуляций.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Blue Ocean: See Your Meters -->
+    <section class="section" id="meters">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">02 / Blue Ocean</div>
+                <h2 class="section-title">Концепция <em style="font-style:italic;color:var(--blue);">«Увидь свои метры»</em></h2>
+                <p class="section-desc">Ни одна платформа в мире не переводит инвестиции в физические квадратные метры. Это чистое незанятое пространство.</p>
+            </div>
+
+            <div class="blue-ocean reveal">
+                <h3 style="font-size:22px;margin-bottom:16px;">Формула расчёта</h3>
+                <div class="formula-box">S<sub>user</sub> = (Стоимость паёв / СЧА фонда) &times; S<sub>total</sub></div>
+                <p style="font-size:14px;color:var(--text-secondary);text-align:center;margin-bottom:32px;">
+                    Пример: 55 297 ₽ / 2 601 600 538 ₽ &times; 9 135.6 м&sup2; = <strong style="color:var(--blue);font-size:18px;">0.194 м&sup2;</strong> (журнальный столик)
+                </p>
+
+                <h3 style="font-size:18px;margin-bottom:16px;">Сравнение с привычными предметами</h3>
+                <div class="meters-grid">
+                    <div class="meter-item"><div class="meter-value">0.1 м&sup2;</div><div class="meter-label">Коврик у входа</div></div>
+                    <div class="meter-item"><div class="meter-value">0.2 м&sup2;</div><div class="meter-label">Журнальный столик</div></div>
+                    <div class="meter-item"><div class="meter-value">1 м&sup2;</div><div class="meter-label">Рабочий стол</div></div>
+                    <div class="meter-item"><div class="meter-value">5.4 м&sup2;</div><div class="meter-label">Большая ванная</div></div>
+                    <div class="meter-item"><div class="meter-value">10 м&sup2;</div><div class="meter-label">Небольшая комната</div></div>
+                    <div class="meter-item"><div class="meter-value">15 м&sup2;</div><div class="meter-label">Переговорная</div></div>
+                    <div class="meter-item"><div class="meter-value">50 м&sup2;</div><div class="meter-label">Однокомнатная квартира</div></div>
+                </div>
+
+                <h3 style="font-size:18px;margin:32px 0 16px;">Почему это работает в России сильнее</h3>
+                <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+                    Российские инвесторы привыкли к <strong style="color:var(--text-primary)">прямому владению</strong> («квартира как инвестиция»). Паевой фонд -- абстракция. «Увидь свои метры» мостит разрыв между привычным (своя квартира) и непривычным (пай в фонде). В США инвесторы привыкли к mutual funds и ETF. В России квартира -- главная инвестиция большинства населения. Это <strong style="color:var(--blue)">культурное преимущество</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAP Analysis -->
+    <section class="section" id="gaps" style="background:rgba(0,0,0,0.015);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">03 / GAP-анализ</div>
+                <h2 class="section-title">Альфа-Капитал vs Мировые практики</h2>
+                <p class="section-desc">Где мы уже впереди, а где нужно догонять. По результатам анализа 11 платформ.</p>
+            </div>
+
+            <div class="gap-section reveal">
+                <div class="gap-section-title" style="color:var(--red);">Критические GAP'ы <span class="gap-count">6</span></div>
+                <div class="cards-grid cards-grid-2">
+                    <div class="card gap-card-critical"><div class="card-title">Project Timeline</div><div class="card-text">Главный инструмент прозрачности. Fundrise: вертикальный таймлайн с фото. АК: только bullet points в PDF.</div><div class="card-meta">P0 &middot; Fundrise</div></div>
+                    <div class="card gap-card-critical"><div class="card-title">Newsfeed / лента обновлений</div><div class="card-text">3 обзора за 9 месяцев = «мёртвый» продукт. Fundrise: 1256+ обновлений.</div><div class="card-meta">P0 &middot; Fundrise</div></div>
+                    <div class="card gap-card-critical"><div class="card-title">Единая карта объектов</div><div class="card-text">Инвестор не видит географию портфеля. Возможность стать первым.</div><div class="card-meta">P0 &middot; Fundrise, Roofstock</div></div>
+                    <div class="card gap-card-critical"><div class="card-title">Разделение доходности</div><div class="card-text">Одна цифра +3.79% -- непонятно, откуда деньги.</div><div class="card-meta">P1 &middot; Fundrise</div></div>
+                    <div class="card gap-card-critical"><div class="card-title">Бенчмаркинг доходности</div><div class="card-text">Инвестор не может ответить: «хорошо ли я вложил?»</div><div class="card-meta">P1 &middot; Fundrise, Arrived</div></div>
+                    <div class="card gap-card-critical"><div class="card-title">Выделение ЗПИФ в портфеле</div><div class="card-text">ЗПИФ перемешаны с акциями среди 20+ продуктов.</div><div class="card-meta">P1 &middot; Fundrise</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Antipatterns -->
+    <section class="section" id="antipatterns">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">04 / Антипаттерны</div>
+                <h2 class="section-title">Чего <em style="font-style:italic;color:var(--red);">НЕ</em> делать</h2>
+                <p class="section-desc">Ошибки мировых платформ инвестиций в недвижимость, которые стоит учесть</p>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;" class="reveal">
+                <div class="antipattern-row"><div class="antipattern-icon">1</div><div><div class="antipattern-title">Радиомолчание между выплатами</div><div class="antipattern-desc">Инвесторы DiversyFund месяцами не получали обновлений, ждали годами без дивидендов. Результат: frustration, подрыв доверия, низкие рейтинги в App Store.</div><div class="antipattern-source">DiversyFund</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">2</div><div><div class="antipattern-title">Непрозрачность ликвидности (liquidity confusion)</div><div class="antipattern-desc">Жалоба #1 у Fundrise: инвесторы не понимали, что деньги заморожены. Quarterly repurchase &#8800; свободный вывод. Для закрытых фондов недвижимости это ещё критичнее.</div><div class="antipattern-source">Fundrise</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">3</div><div><div class="antipattern-title">Онбординг-стена до просмотра каталога</div><div class="antipattern-desc">Fundrise требует SSN и банковские данные ДО возможности посмотреть продукты. Отсекает потенциальных «браузеров», которые могли бы конвертироваться позже.</div><div class="antipattern-source">Fundrise</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">4</div><div><div class="antipattern-title">Обфускация доходности на дашборде</div><div class="antipattern-desc">Fundrise менял дашборд так, что gains/losses стали менее очевидными. Массовые жалобы в Google Play на непрозрачность. Инвестор должен видеть P&L сразу.</div><div class="antipattern-source">Fundrise</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">5</div><div><div class="antipattern-title">Завышенные обещания доходности</div><div class="antipattern-desc">Yieldstreet публиковал «9.61% annualized net return», при реальных 6-7% IRR. Reddit-критика подорвала credibility. Диапазоны и «целевая» -- безопаснее.</div><div class="antipattern-source">Yieldstreet</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">6</div><div><div class="antipattern-title">Геймификация как в казино</div><div class="antipattern-desc">Landa сделала trading-like UI для illiquid assets (графики цен, тикеры, биржевой стакан). Это привело к закрытию вторичного рынка. Недвижимость &#8800; акции.</div><div class="antipattern-source">Landa (закрылась)</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">7</div><div><div class="antipattern-title">Перегрузка профессиональным жаргоном</div><div class="antipattern-desc">CrowdStreet заполнял deal pages терминами IRR, equity multiple, cap rate без пояснений -- отпугивая розничных инвесторов. Простой язык + tooltips работают лучше.</div><div class="antipattern-source">CrowdStreet</div></div></div>
+                <div class="antipattern-row"><div class="antipattern-icon">8</div><div><div class="antipattern-title">Push-спам вместо ценности</div><div class="antipattern-desc">Когда каждый пуш = маркетинг, пользователи отключают уведомления. Лучший CTR: выплата дивидендов > обновления объекта > образование. Маркетинг -- худший.</div><div class="antipattern-source">Общий паттерн отрасли</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Overview (moved to end) -->
+    <section class="section" id="market" style="background:rgba(0,0,0,0.015);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">05 / Кого анализировали</div>
+                <h2 class="section-title">11 платформ инвестиций в недвижимость</h2>
+                <p class="section-desc">Ключевые WealthTech-платформы мира, на основе которых сформированы лучшие практики и антипаттерны</p>
+            </div>
+            <div class="cards-grid cards-grid-2">
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🏠</span><div><div class="card-title"><a href="https://fundrise.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Fundrise</a></div><div class="card-text">Крупнейшая розничная платформа инвестиций в недвижимость в США. Управляет $3+ млрд через собственные non-traded eREIT. Входной билет от $10, 2+ млн пользователей. Лидер по UX: таймлайны объектов, лента из 1256+ обновлений, 5-уровневая тиерная модель, автоинвестиции, подкаст, AI-аналитика (RealAI). Абсолютный бенчмарк отрасли.</div></div></div></div>
+                <div class="card reveal reveal-delay-1"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🏢</span><div><div class="card-title"><a href="https://crowdstreet.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">CrowdStreet</a></div><div class="card-text">Маркетплейс коммерческих сделок для аккредитованных инвесторов. Привлечено $4+ млрд, минимальный чек $25K. Нет мобильного приложения -- только web. Сильные deal pages с IRR, urgency-механиками (прогресс-бар + дедлайн), вебинарами и реферальной программой ($200 бонус). Ориентирован на опытных инвесторов.</div></div></div></div>
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🏘</span><div><div class="card-title"><a href="https://arrived.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Arrived Homes</a></div><div class="card-text">Фракционное владение конкретными домами -- карточки в стиле Airbnb с фото-каруселью. Вход от $100, поддержка Amazon (Jeff Bezos). Золотой стандарт визуализации: рейтинг района, прогресс-бар сбора, счётчик инвесторов, Dividend Yield на первом плане. Быстрая покупка за 15 минут.</div></div></div></div>
+                <div class="card reveal reveal-delay-1"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">📊</span><div><div class="card-title"><a href="https://realtymogul.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">RealtyMogul</a></div><div class="card-text">Non-traded REIT + отдельные сделки. Минимум $5K, аудит CohnReznick. Нет мобильного приложения. Отличается институциональным качеством отчётности: Portfolio Snapshot, калькулятор «Что если вложить $10K», квартальные PDF.</div></div></div></div>
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🌐</span><div><div class="card-title"><a href="https://yieldstreet.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Yieldstreet</a></div><div class="card-text">Мультиклассовая платформа альтернативных инвестиций (недвижимость, искусство, кредиты). AUM $1B+, минимум $10K. Есть мобильное приложение с премиальной dark-theme эстетикой. Тиерная модель членства, ежеквартальные окна ликвидности.</div></div></div></div>
+                <div class="card reveal reveal-delay-1"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">📱</span><div><div class="card-title"><a href="https://concreit.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Concreit</a></div><div class="card-text">Mobile-only платформа с входом от $1. Самая геймифицированная: еженедельные дивиденды, Rewards-программа (+1% к доходности за активность), Instant Earn, swipeable-карточки, Web Stories вместо PDF-отчётов. Интересная модель для массового сегмента.</div></div></div></div>
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🏗</span><div><div class="card-title"><a href="https://diversyfund.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">DiversyFund</a></div><div class="card-text">Один продукт (Growth REIT), минимум $500, 900K участников. Антипример по коммуникации: инвесторы месяцами не получали обновлений, ждали годами без дивидендов. Показывает, как радиомолчание убивает доверие.</div></div></div></div>
+                <div class="card reveal reveal-delay-1"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🗺</span><div><div class="card-title"><a href="https://roofstock.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Roofstock</a></div><div class="card-text">Маркетплейс арендных домов с минимумом $100K+. 3D-туры объектов, поиск по карте с фильтрами, аналитика районов, финансовые калькуляторы, интеграция с управляющими компаниями. Ближайший аналог АК по 3D-визуализации.</div></div></div></div>
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🎮</span><div><div class="card-title"><a href="https://landa.app" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Landa</a></div><div class="card-text">Фракционные акции недвижимости с трейдинговым интерфейсом -- торговля как на бирже. Минимум ~$5, вторичный рынок (закрыт). Антипример: геймификация как в казино привела к проблемам. Показывает, что illiquid assets нельзя подавать как акции.</div></div></div></div>
+                <div class="card reveal reveal-delay-1"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🪺</span><div><div class="card-title"><a href="https://myhappynest.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">HappyNest</a></div><div class="card-text">Non-traded REIT с уникальной механикой Round-Ups: округление повседневных трат -- сдача автоматически инвестируется в недвижимость. Минимум $10, простые метафоры, понятный язык. Интересная модель для интеграции с Альфа-Банком.</div></div></div></div>
+                <div class="card reveal"><div style="display:flex;align-items:flex-start;gap:16px;"><span style="font-size:28px;flex-shrink:0;">⏱</span><div><div class="card-title"><a href="https://groundfloor.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--border-hover);">Groundfloor</a></div><div class="card-text">Краткосрочное кредитование строительства (RE debt). Минимум $10. Отличается urgency-механиками: обратные отсчётики, live-счётчики инвесторов, карта проектов на дашборде, ожидаемые даты погашения, система грейдов (A-G) для оценки риска.</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo"><span>Альфа</span>-Капитал</div>
+            <p>Блок «Цифровой бизнес» &middot; Февраль 2026</p>
+            <p style="margin-top:8px;">Анализ международных инноваций &middot; 11 платформ инвестиций в недвижимость</p>
+            <p style="margin-top:4px;font-size:11px;">WealthTech Radar &middot; Мировой радар</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- Card Detail Modal -->
+    <div class="card-modal" id="cardModal">
+        <div class="card-modal-overlay" onclick="closeCardModal()"></div>
+        <div class="card-modal-content">
+            <button class="card-modal-close" onclick="closeCardModal()">&times;</button>
+            <div class="card-modal-image" id="cardModalImageWrap">
+                <img id="cardModalImg" src="" alt="">
+            </div>
+            <div class="card-modal-body">
+                <div class="card-modal-leader" id="cardModalLeader"></div>
+                <h3 class="card-modal-title" id="cardModalTitle"></h3>
+                <p class="card-modal-desc" id="cardModalDesc"></p>
+                <div class="card-modal-ak" id="cardModalAk"></div>
+                <div class="card-modal-extended" id="cardModalExtended"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Sticky Nav
+    const stickyNav = document.getElementById('stickyNav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 600) { stickyNav.classList.add('visible'); }
+        else { stickyNav.classList.remove('visible'); }
+        lastScroll = y;
+    });
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Practice expand/collapse
+    function togglePractice(card) {
+        card.classList.toggle('open');
+    }
+
+    // Filter practice groups
+    function filterGroup(group) {
+        document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`[data-group="${group}"]`).classList.add('active');
+        document.querySelectorAll('.bp-group').forEach(g => {
+            if (group === 'all') { g.classList.remove('hidden'); return; }
+            g.classList.toggle('hidden', g.dataset.group !== group);
+        });
+    }
+
+    // Lightbox
+    function openLightbox(el) {
+        const img = el.querySelector('img');
+        const caption = el.querySelector('.screenshot-caption');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightboxCaption').textContent = caption ? caption.textContent : '';
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Card Detail Modal
+    function openCardModal(card) {
+        const visual = card.querySelector('.bp-card-visual');
+        const imgUrl = visual ? visual.style.backgroundImage.replace(/url\(['"]?([^'"]+)['"]?\)/, '$1') : '';
+        const leader = card.querySelector('.bp-card-leader')?.textContent || '';
+        const title = card.querySelector('.bp-card-title')?.textContent || '';
+        const desc = card.querySelector('.bp-card-desc')?.innerHTML || '';
+        const ak = card.querySelector('.bp-card-ak')?.innerHTML || '';
+        const extended = card.querySelector('.bp-card-extended')?.innerHTML || '';
+
+        const img = document.getElementById('cardModalImg');
+        const imgWrap = document.getElementById('cardModalImageWrap');
+        if (imgUrl) { img.src = imgUrl; imgWrap.style.display = 'flex'; }
+        else { imgWrap.style.display = 'none'; }
+
+        document.getElementById('cardModalLeader').textContent = leader;
+        document.getElementById('cardModalTitle').textContent = title;
+        document.getElementById('cardModalDesc').innerHTML = desc;
+        document.getElementById('cardModalAk').innerHTML = ak;
+
+        const extEl = document.getElementById('cardModalExtended');
+        if (extended) { extEl.innerHTML = extended; extEl.style.display = 'block'; }
+        else { extEl.style.display = 'none'; }
+
+        document.getElementById('cardModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCardModal() {
+        document.getElementById('cardModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.bp-card').forEach(card => {
+        card.addEventListener('click', () => openCardModal(card));
+    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeCardModal(); } });
+    </script>
+</body>
+</html>
